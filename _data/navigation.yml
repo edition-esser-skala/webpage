@@ -1,0 +1,21 @@
+main:
+  - title: Welcome
+    url: /
+  - title: About
+    url: /about
+  - title: Scores
+    url: /scores
+  - title: Contact
+    url: /contact
+
+scores:
+  - title: A
+    children:
+      - title: Adlgasser, Anton Cajetan
+        url: /scores/adlgasser
+      - title: Albrechtsberger, Johann Georg
+        url: /scores/albrechtsberger
+  - title: B
+    children:
+      - title: Bachschmid, Anton Adam
+        url: /scores/bachschmid
