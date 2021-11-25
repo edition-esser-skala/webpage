@@ -18,3 +18,5 @@ This website is privately provided and maintained by Wolfgang Esser-Skala, Wolfg
 Typeset with [Source Sans Pro](https://fonts.google.com/specimen/Source+Sans+Pro) and [Fredericka the Great](https://fonts.google.com/specimen/Fredericka+the+Great).
 
 Powered by [Jekyll](https://jekyllrb.com/) and [Minimal Mistakes](https://mademistakes.com/work/minimal-mistakes-jekyll-theme/).
+
+Last modified at {% last_modified_at %Y-%m-%d %}.

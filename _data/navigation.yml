@@ -9,13 +9,18 @@ main:
     url: /contact
 
 scores:
-  - title: A
-    children:
-      - title: Adlgasser, Anton Cajetan
-        url: /scores/adlgasser
-      - title: Albrechtsberger, Johann Georg
-        url: /scores/albrechtsberger
-  - title: B
-    children:
-      - title: Bachschmid, Anton Adam
-        url: /scores/bachschmid
+- children:
+  - title: Haydn, Johann Michael
+    url: /scores/johann-michael-haydn
+  - title: Hofmann, Leopold
+    url: /scores/leopold-hofmann
+  title: H
+- children:
+  - title: "T\u016Fma, Franti\u0161ek Ign\xE1c Anton\xEDn"
+    url: /scores/frantisek-ignac-antonin-tuma
+  title: T
+- children:
+  - title: Wolf, Ernst Wilhelm
+    url: /scores/ernst-wilhelm-wolf
+  title: W
+

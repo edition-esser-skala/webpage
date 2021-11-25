@@ -15,5 +15,38 @@ $primary-color: rgb(212, 0, 0);
 $sans-serif: "Source Sans Pro", sans-serif;
 // $monospace  : Monaco, Consolas, "Lucida Console", monospace;
 
+
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+
+.nav__sub-title {
+  color: $primary-color;
+}
+
+table.work-table {
+  font-size: .85em;
+}
+
+table.work-table a {
+  text-decoration: none;
+}
+
+table.work-table td {
+  border: 0;
+  padding: 0 .5em;
+  vertical-align: top;
+}
+
+.work-id {
+  font-weight: 400;
+}
+
+.label-col {
+  font-style: italic;
+  white-space: nowrap;
+}
+
+.asset-link {
+  margin-right: .4em;
+}

@@ -2,5 +2,9 @@
 .jekyll-cache
 .jekyll-metadata
 .sass-cache
+_data/navigation.yml
+_pages/scores
 _site
+__pycache__
 vendor
+pat.py
