@@ -50,3 +50,22 @@ table.work-table td {
 .asset-link {
   margin-right: .4em;
 }
+
+.toc .nav__title {
+  background: rgb(191, 191, 191);
+}
+
+.toc .active a {
+  background-color: rgb(245, 245, 245);
+}
+
+code.language-lilypond {
+  position: relative;
+  margin-bottom: 1em;
+  // background: $base00;
+  // color: $base05;
+  font-family: $monospace;
+  font-size: $type-size-6;
+  line-height: 1.8;
+  // border-radius: $border-radius;
+}

@@ -3,6 +3,7 @@
 .jekyll-metadata
 .sass-cache
 _data/navigation.yml
+_pages/about
 _pages/scores
 _site
 __pycache__

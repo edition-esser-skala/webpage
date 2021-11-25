@@ -70,6 +70,42 @@ scores:
 """
 
 
+# Get current version of documentation ------------------------------------
+
+def get_markdown_file(file, outfile, title):
+    header = (
+        "---\n"
+        f"title: {title}\n"
+        f"permalink: /about/{outfile[:-3]}\n"
+        "toc: true\n"
+        "toc_label: Contents\n"
+        "toc_sticky: true\n"
+        "---\n"
+    )
+
+    print(f"Obtaining {file}")
+    doc = (Github(TOKEN)
+           .get_organization(GITHUB_ORG)
+           .get_repo("ees-tools")
+           .get_contents(path=file)
+           .decoded_content
+           .decode("utf-8")
+           .split("\n", 1)[1])
+
+    doc = header + re.sub("# Contents.+?##", "#", doc, flags=re.DOTALL)
+
+    with open(f"_pages/about/{outfile}", "w") as f:
+        f.write(doc)
+
+
+get_markdown_file("editorial_guidelines.md",
+                  "editorial-guidelines.md",
+                  "Editorial guidelines")
+get_markdown_file("README.md",
+                  "technical-documentation.md",
+                  "Technical documentation",)
+
+
 
 # Collect metadata --------------------------------------------------------
 
