@@ -4,6 +4,9 @@ from collections import namedtuple
 from github import Github
 from operator import attrgetter, itemgetter
 from pat import TOKEN
+from pygments import highlight
+from pygments.lexers import LilyPondLexer
+from pygments.formatters import HtmlFormatter
 import re
 from read_metadata import parse_metadata
 import yaml
@@ -104,6 +107,31 @@ get_markdown_file("editorial_guidelines.md",
 get_markdown_file("README.md",
                   "technical-documentation.md",
                   "Technical documentation",)
+
+
+
+# Highlight LilyPond code blocks ------------------------------------------
+
+def highlight_lilypond(file):
+    pattern = re.compile(r"```lilypond(.+?)```", re.DOTALL)
+
+    with open(file) as f:
+        doc = f.read()
+
+    match = pattern.search(doc)
+    while match:
+        code = (highlight(match.group(1), LilyPondLexer(), HtmlFormatter())
+                .replace("<pre>", '<pre class="highlight">', 1)
+                .replace("\\", "\\\\"))
+        code = f'<div class="language-lilypond highlighter-rouge">{code}</div>'
+        doc = pattern.sub(code, doc, 1)
+        match = pattern.search(doc)
+
+    with open(file, "w") as f:
+        f.write(doc)
+
+print("Highlighting LilyPond code")
+highlight_lilypond("_pages/about/technical-documentation.md")
 
 
 
