@@ -1,6 +1,8 @@
 ---
-title: About
+title: General information
 permalink: /about
+sidebar:
+  nav: about
 ---
 
 What started as a side project for generating scores for the Cantorey has grown into a full-fledges publishing project with its own

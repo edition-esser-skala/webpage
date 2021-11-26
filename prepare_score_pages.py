@@ -47,7 +47,7 @@ RELEASE_LINK_TEMPLATE = ("[{version}](https://github.com/" f"{GITHUB_ORG}"
 ASSET_LINK_TEMPLATE = f"[{{part_name}}](https://github.com/{GITHUB_ORG}/{{repo}}/releases/download/{{version}}/{{file}}){{{{: .asset-link}}}}"
 
 WORK_TEMPLATE = """\
-### {title} <span class="work-id">{id}</span>
+### {title}<br/><span class="work-id">{id}</span>
 
 |<span class="label-col">genre</span>|{genre}|
 |<span class="label-col">scoring</span>|{scoring}|
@@ -69,6 +69,16 @@ main:
   - title: Contact
     url: /contact
 
+about:
+  - title: About
+    children:
+      - title: General information
+        url: /about
+      - title: Editorial guidelines
+        url: /about/editorial-guidelines
+      - title: Technical documentation
+        url: /about/technical-documentation
+
 scores:
 {}
 """
@@ -84,6 +94,8 @@ def get_markdown_file(file, outfile, title):
         "toc: true\n"
         "toc_label: Contents\n"
         "toc_sticky: true\n"
+        "sidebar:\n"
+        "  nav: about\n"
         "---\n"
     )
 
