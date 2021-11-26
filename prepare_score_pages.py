@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 from collections import namedtuple
+import dateutil.parser
 from github import Github
 from operator import attrgetter, itemgetter
 from pat import TOKEN
@@ -164,9 +165,20 @@ for rid, repo in enumerate(repos):
     metadata["scoring"] = re.sub(r"\\sharp\s(.)", r"\1♯", metadata["scoring"])
 
     metadata["repo"] = repo.name
-    metadata["releases"] = [dict(version=r.tag_name,
-                                 date=r.published_at.strftime("%Y-%m-%d"))
-                            for r in releases]
+    tags = {t.name: t for t in repo.get_tags()}
+
+    metadata["releases"] = [
+        dict(
+            version=r.tag_name,
+            date=dateutil.parser.parse(
+                tags[r.tag_name]
+                .commit
+                .commit
+                .last_modified
+            ).strftime("%Y-%m-%d")
+        )
+        for r in releases
+    ]
     metadata["assets"] = [i.name for i in releases[0].get_assets()]
 
     c = Composer(**metadata["composer"])
