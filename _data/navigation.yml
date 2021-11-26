@@ -8,6 +8,16 @@ main:
   - title: Contact
     url: /contact
 
+about:
+  - title: About
+    children:
+      - title: General information
+        url: /about
+      - title: Editorial guidelines
+        url: /about/editorial-guidelines
+      - title: Technical documentation
+        url: /about/technical-documentation
+
 scores:
 - children:
   - title: Haydn, Johann Michael
