@@ -4,20 +4,12 @@
 
 @charset "utf-8";
 
-// $body-color
-// $background-color
-// $text-color
 $link-color: rgb(212, 0, 0) ;
-// $masthead-link-color: blue;
 $primary-color: rgb(212, 0, 0);
 
-// $serif      : Georgia, Times, serif;
 $sans-serif: "Source Sans Pro", sans-serif;
-// $monospace  : Monaco, Consolas, "Lucida Console", monospace;
+$monospace: "Fira Code", monospace;
 
-
-/* dracula syntax highlighting (base16) */
-/* https://github.com/dracula/base16-dracula-scheme */
 $base00: #282936;
 $base01: #3a3c4e;
 $base02: #4d4f68;
@@ -34,7 +26,6 @@ $base0c: #a1efe4;
 $base0d: #62d6e8;
 $base0e: #b45bcf;
 $base0f: #00f769;
-
 
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
