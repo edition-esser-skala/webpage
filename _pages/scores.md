@@ -5,4 +5,4 @@ sidebar:
   nav: scores
 ---
 
-Select a composer from the menu.
+Please select a composer from the menu.

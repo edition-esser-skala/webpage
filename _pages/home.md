@@ -13,4 +13,4 @@ header:
 
 # Welcome!
 
-We are specialized in publishing 18th century sacral music that has been forgotten.
+We are an independent, open-source publisher focusing on 18th century sacral music by masters who have largely been forgotten.
