@@ -80,8 +80,8 @@ sidebar:
   nav: scores
 ---
 
-The *Proprium Missæ* collects all known short liturgical works
-by Johann Michael Haydn, in particular those that are freely available
+The *Proprium Missæ* is an emerging collection of all known short liturgical
+works by Johann Michael Haydn, in particular those that are freely available
 in contemporary manuscripts.
 
 
