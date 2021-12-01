@@ -10,6 +10,7 @@ $primary-color: rgb(212, 0, 0);
 $sans-serif: "Source Sans Pro", sans-serif;
 $monospace: "Fira Code", monospace;
 
+// syntax highlighting colors
 $base00: #282936;
 $base01: #3a3c4e;
 $base02: #4d4f68;
@@ -28,14 +29,31 @@ $base0e: #b45bcf;
 $base0f: #00f769;
 
 
+// import default settings from the theme
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
 
+// navigation sidebar (left)
 .nav__sub-title {
   color: $primary-color;
 }
 
+// toc sidebar (right)
+.toc .nav__title {
+  background: rgb(191, 191, 191);
+}
+
+.toc .active a {
+  background-color: rgb(245, 245, 245);
+}
+
+// catalogue of works number in work title
+.work-id {
+  font-weight: 400;
+}
+
+// work details on composer page
 table.work-table {
   font-size: .85em;
 }
@@ -50,10 +68,6 @@ table.work-table td {
   vertical-align: top;
 }
 
-.work-id {
-  font-weight: 400;
-}
-
 .label-col {
   font-style: italic;
   white-space: nowrap;
@@ -63,12 +77,34 @@ table.work-table td {
   margin-right: .4em;
 }
 
-.toc .nav__title {
-  background: rgb(191, 191, 191);
+.asset-link.full-score {
+  font-weight: 700;
 }
 
-.toc .active a {
-  background-color: rgb(245, 245, 245);
+// overview table on project page
+table.overview-table {
+  font-size: .85em;
 }
 
+table.overview-table thead {
+  background-color: white;
+  border: 0;
+}
+
+table.overview-table th {
+  border: 0;
+  padding: 0em 0.5em;
+}
+
+table.overview-table td {
+  border: 0;
+  padding: 0em 0.5em;
+}
+
+table.overview-table a {
+  text-decoration: none;
+}
+
+
+// LilyPond syntax theme
 @import "lilypond-syntax";
