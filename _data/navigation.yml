@@ -19,12 +19,20 @@ about:
         url: /about/technical-documentation
 
 scores:
+- title: ❦ Projects
+  children:
+    - title: Michael Haydn's Proprium Missæ
+      url: /projects/proprium-missae
 - children:
   - title: Haydn, Johann Michael
     url: /scores/johann-michael-haydn
   - title: Hofmann, Leopold
     url: /scores/leopold-hofmann
   title: H
+- children:
+  - title: "St\xF6lzel, Gottfried Heinrich"
+    url: /scores/gottfried-heinrich-stoelzel
+  title: S
 - children:
   - title: "T\u016Fma, Franti\u0161ek Ign\xE1c Anton\xEDn"
     url: /scores/frantisek-ignac-antonin-tuma
