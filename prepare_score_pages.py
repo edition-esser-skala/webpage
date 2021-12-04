@@ -28,8 +28,10 @@ GITHUB_ORG_NAME = "edition-esser-skala"
 
 GITHUB_ORG = Github(TOKEN).get_organization(GITHUB_ORG_NAME)
 
-IGNORED_REPOS = ["ees-tools", "ees-template", "haydn-m-proprium-missae",
+IGNORED_REPOS = ["ees-template", "ees-tools", "haydn-m-proprium-missae",
                  "sacral-lyrics", "webpage"]
+
+IGNORED_WORKS = ["template"]
 
 SLUG_REPLACE = {
     " ": "-", ",": "",
@@ -39,6 +41,11 @@ SLUG_REPLACE = {
     "ß": "ss", "š": "s",
     "ü": "ue", "ů": "u",
     "ý": "y"
+}
+
+LICENSES = {
+    "cc-by-sa-4.0": "![CC BY-SA 4.0](/assets/images/license_cc-by-sa.svg){:width='120px'}",
+    "cc-by-nc-sa-4.0": "![CC BY-NC-SA 4.0](/assets/images/license_cc-by-nc-sa.svg){:width='120px'}"
 }
 
 
@@ -66,7 +73,7 @@ PDF_LINK_TEMPLATE = ("[{part_name}](https://edition.esser-skala.at/assets/"
                      "{{: .asset-link{cls}}}")
 
 WORK_TEMPLATE = """\
-### {title}<br/><span class="work-id">{id}</span>
+### {title}<br/><span class="work-subtitle">{subtitle}</span>
 
 |<span class="label-col">genre</span>|{genre}|
 |<span class="label-col">scoring</span>|{scoring}|
@@ -74,6 +81,7 @@ WORK_TEMPLATE = """\
 |<span class="label-col">GitHub</span>|{assets}|
 |<span class="label-col">IMSLP</span>|[scores and parts](https://imslp.org/wiki/{imslp})|
 |<span class="label-col">previous releases</span>|{old_releases}|
+|<span class="label-col">license</span>|{license}|
 {{: class="work-table"}}
 """
 
@@ -106,13 +114,14 @@ in contemporary manuscripts.
 PROJECT_TABLEROW_TEMPLATE = "|[{id_int}](#mh-{id_int})|{title}|{genre}|"
 
 PROJECT_WORK_TEMPLATE = """\
-### {title}<br/><span class="work-id">{id}</span>
+### {title}<br/><span class="work-subtitle">{subtitle}</span>
 {{: #mh-{id_int}}}
 
 |<span class="label-col">genre</span>|{genre}|
 |<span class="label-col">festival</span>|{festival}|
 |<span class="label-col">scoring</span>|{scoring}|
 |<span class="label-col">scores</span>|{assets}|
+|<span class="label-col">license</span>|{license}|
 {{: class="work-table"}}
 """
 
@@ -151,12 +160,21 @@ scores:
 
 # Prepare projects --------------------------------------------------------
 
-def format_scoring(scoring):
-    res = re.sub(r"\\newline", " ", scoring)
-    res = re.sub(r"\\\\", " ", res)
-    res = re.sub(r"\\flat\s(.)", r"\1♭", res)
-    res = re.sub(r"\\sharp\s(.)", r"\1♯", res)
-    return res
+def format_metadata(metadata):
+    scoring = re.sub(r"\\newline", " ", metadata["scoring"])
+    scoring = re.sub(r"\\\\", " ", scoring)
+    scoring = re.sub(r"\\flat\s(.)", r"\1♭", scoring)
+    scoring = re.sub(r"\\sharp\s(.)", r"\1♯", scoring)
+    metadata["scoring"] = scoring
+
+    metadata["subtitle"] = re.sub(r"\\newline\s*",
+                                  "<br/>",
+                                  metadata["subtitle"]
+                           ).replace(r"\\", " ")
+
+    metadata["license"] = LICENSES[metadata["license"]]
+
+    return metadata
 
 
 def make_part_name(filename, extension):
@@ -172,8 +190,9 @@ def prepare_projects():
     print("Preparing the Proprium Missae project")
     repo = GITHUB_ORG.get_repo("haydn-m-proprium-missae")
 
-    work_dirs = [d.name for d in repo.get_contents("works")]
-    # work_dirs = ["453", "46", "145", "142"]
+    work_dirs = [w.name for w in repo.get_contents("works")
+                 if w.name not in IGNORED_WORKS]
+    # work_dirs = ["453", "46", "145", "142"]  # for testing
 
     works = []
     for counter, work_dir in enumerate(work_dirs):
@@ -183,10 +202,12 @@ def prepare_projects():
             string=repo
                    .get_contents(f"works/{work_dir}/metadata.yaml")
                    .decoded_content,
-            checksum_from=None
+            checksum_from=None,
+            check_license=False
         )
 
-        metadata["scoring"] = format_scoring(metadata["scoring"])
+        metadata = format_metadata(metadata)
+
         metadata["id_int"] = int(metadata["id"].removeprefix("MH "))
 
         if "festival" not in metadata:
@@ -276,6 +297,7 @@ def collect_metadata():
     repos = GITHUB_ORG.get_repos()
 
     for counter, repo in enumerate(repos):
+        # if counter > 3: break  # for testing
         counter_str = f"({counter + 1}/{repos.totalCount})"
         if repo.name in IGNORED_REPOS:
             print(f"{counter_str} Ignoring {repo.name} (blacklisted)")
@@ -291,10 +313,11 @@ def collect_metadata():
             string=repo
                    .get_contents("metadata.yaml", ref=releases[0].tag_name)
                    .decoded_content,
-            checksum_from=None
+            checksum_from=None,
+            check_license=False
         )
 
-        metadata["scoring"] = format_scoring(metadata["scoring"])
+        metadata = format_metadata(metadata)
 
         metadata["repo"] = repo.name
         tags = {t.name: t for t in repo.get_tags()}
