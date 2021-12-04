@@ -32,8 +32,13 @@ IGNORED_REPOS = ["ees-tools", "ees-template", "haydn-m-proprium-missae",
                  "sacral-lyrics", "webpage"]
 
 SLUG_REPLACE = {
-    " ": "-", "á": "a", "ä": "ae", "í": "i", "ö": "oe", "ß": "ss", "š": "s",
-    "ü": "ue", "ů": "u", "ý": "y", ",": ""
+    " ": "-", ",": "",
+    "á": "a", "ä": "ae", "æ": "ae",
+    "í": "i",
+    "ö": "oe", "œ": "oe",
+    "ß": "ss", "š": "s",
+    "ü": "ue", "ů": "u",
+    "ý": "y"
 }
 
 
@@ -125,8 +130,10 @@ main:
 about:
   - title: About
     children:
-      - title: General information
+      - title: Overview
         url: /about
+      - title: Sources for digital versions
+        url: /about/sources-for-digital-versions
       - title: Editorial guidelines
         url: /about/editorial-guidelines
       - title: Technical documentation
@@ -146,6 +153,7 @@ scores:
 
 def format_scoring(scoring):
     res = re.sub(r"\\newline", " ", scoring)
+    res = re.sub(r"\\\\", " ", res)
     res = re.sub(r"\\flat\s(.)", r"\1♭", res)
     res = re.sub(r"\\sharp\s(.)", r"\1♯", res)
     return res

@@ -1,5 +1,5 @@
 ---
-title: General information
+title: Overview
 permalink: /about
 sidebar:
   nav: about
@@ -15,6 +15,8 @@ The Edition Esser-Skala provides practitioners with reliable, open-source modern
 - a bilingual (Danish/German) edition of Friedrich Ludwig Æmilius [Kunzen](/scores/friedrich-ludwig-aemilius-kunzen)'s *Skabningens Halleluja* (*Das Halleluja der Schöpfung*)
 - a selection of the works by Baldassare [Galuppi](/scores/baldassare-galuppi) kept in Dresden
 - Austrian “superstars” such as Joseph Leopold [Eybler](/scores/joseph-leopold-edler-von-eybler), Florian Leopold [Gassmann](/scores/florian-leopold-gassmann), Leopold [Hofmann](/scores/leopold-hofmann), and František Ignác Antonín [Tůma](/scores/frantisek-ignac-antonin-tuma)
+
+To compile these editions, we utilize freely available manuscripts and prints, which are provided by an increasing number of [archives and libraries](sources-for-digital-versions).
 
 Our editions follow a set of [editorial guidelines](editorial-guidelines) to ensure high quality. Moreover, we have implemented a largely automated engraving and publishing process. Briefly, this workflow encompasses
 - beautiful scores engraved by [LilyPond](https://lilypond.org),
