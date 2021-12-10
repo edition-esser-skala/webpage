@@ -319,6 +319,9 @@ def collect_metadata():
 
         metadata = format_metadata(metadata)
 
+        if "imslp" not in metadata:
+            metadata["imslp"] = ""
+
         metadata["repo"] = repo.name
         tags = {t.name: t for t in repo.get_tags()}
 
