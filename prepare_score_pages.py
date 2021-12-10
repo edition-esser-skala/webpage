@@ -48,6 +48,13 @@ LICENSES = {
     "cc-by-nc-sa-4.0": "![CC BY-NC-SA 4.0](/assets/images/license_cc-by-nc-sa.svg){:width='120px'}"
 }
 
+PART_REPLACE = {
+    "full_score": "full&nbsp;score",
+    "org_realized": "org&nbsp;(realizzato)",
+    "cemb_realized": "cemb&nbsp;(realizzato)",
+    "bc_realized": "bc&nbsp;(realizzato)"
+}
+
 
 
 # Templates ---------------------------------------------------------------
@@ -179,11 +186,7 @@ def format_metadata(metadata):
 
 def make_part_name(filename, extension):
     name = filename.removesuffix(extension)
-    if name == "full_score":
-        name = "full&nbsp;score"
-    if name == "org_realized":
-        name = "org&nbsp;(realizzato)"
-    return name
+    return PART_REPLACE.get(name, name).replace("_", "&nbsp;")
 
 
 def prepare_projects():
