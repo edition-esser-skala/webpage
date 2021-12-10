@@ -1,6 +1,8 @@
 ---
 title: Contact
 permalink: /contact
+header:
+  image: /assets/images/header_contact.jpg
 ---
 
 Edition Esser-Skala<br/>

@@ -1,6 +1,8 @@
 ---
 title: Scores
 permalink: /scores
+header:
+  image: /assets/images/header_scores.jpg
 sidebar:
   nav: scores
 ---
