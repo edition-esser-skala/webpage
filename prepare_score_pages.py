@@ -360,7 +360,10 @@ def generate_pages(works):
     for composer in sorted(works.keys(),
                            key=attrgetter("last", "suffix", "first")):
         # page header
-        if composer.suffix == "":
+        if composer.last == "Anonymus":
+            title = composer.last
+            slug = composer.last
+        elif composer.suffix == "":
             title = f"{composer.last}, {composer.first}"
             slug = f"{composer.first}-{composer.last}"
         else:
