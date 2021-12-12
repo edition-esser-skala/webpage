@@ -49,10 +49,26 @@ LICENSES = {
 }
 
 PART_REPLACE = {
-    "full_score": "full&nbsp;score",
-    "org_realized": "org&nbsp;(realizzato)",
-    "cemb_realized": "cemb&nbsp;(realizzato)",
-    "bc_realized": "bc&nbsp;(realizzato)"
+    # instrument names
+    "bc_realized": "bc (realizzato)",
+    "cord": "cor (D)",
+    "corf": "cor (F)",
+    "coro_DE": "coro (DE)",
+    "coro_DK": "coro (DK)",
+    "cemb_realized": "cemb (realizzato)",
+    "full_score": "full score",
+    "oba": "ob d'amore",
+    "obdc": "ob da caccia",
+    "org_realized": "org (realizzato)",
+    "pf_red": "pf (riduzione)",
+
+    # instrument numbers
+    r"([\w\)])123$": r"\1 1, 2, 3",
+    r"([\w\)])12$": r"\1 1, 2",
+    r"([\w\)])(\d)$": r"\1 \2",
+
+    # spaces
+    r"[_ ]": r"&nbsp;"
 }
 
 
@@ -186,7 +202,9 @@ def format_metadata(metadata):
 
 def make_part_name(filename, extension):
     name = filename.removesuffix(extension)
-    return PART_REPLACE.get(name, name).replace("_", "&nbsp;")
+    for old, new in PART_REPLACE.items():
+        name = re.sub(old, new, name)
+    return name
 
 
 def prepare_projects():
