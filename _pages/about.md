@@ -7,13 +7,11 @@ sidebar:
   nav: about
 ---
 
-**Note:** We are currently updating our scores and integrating them into the new website. This transfer is expected to finish in the first quarter of 2022. Until then, please also visit [our IMSLP site](https://imslp.org/wiki/Category:Skala,_Wolfgang) for a list of available scores.
-{: .notice--danger}
-
 The Edition Esser-Skala provides practitioners with reliable, [Open Content](https://opendefinition.org/od) modern editions of (mainly) 18th century sacral music. Our highlights include
 
 - various unpublished works by Johann [Michael Haydn](/scores/johann-michael-haydn), many of which are collected in the [Proprium Missæ](/projects/proprium-missae/) project
 - passions and oratorios by Johann Heinrich [Rolle](/scores/johann-heinrich-rolle) as well as Gottfried Heinrich [Stölzel](/scores/gottfried-heinrich-stoelzel)
+- the first edition of the *Missa Providentiæ* by Antonio [Caldara](/scores/antonio-caldara), which includes a *Credo* by Jan Dismas Zelenka (ZWV 31)
 - a bilingual (Danish/German) edition of Friedrich Ludwig Æmilius [Kunzen](/scores/friedrich-ludwig-aemilius-kunzen)'s *Skabningens Halleluja* (*Das Halleluja der Schöpfung*)
 - a selection of the works by Baldassare [Galuppi](/scores/baldassare-galuppi) kept in Dresden
 - Austrian “superstars” such as Joseph Leopold [Eybler](/scores/joseph-leopold-edler-von-eybler), Florian Leopold [Gassmann](/scores/florian-leopold-gassmann), Leopold [Hofmann](/scores/leopold-hofmann), and František Ignác Antonín [Tůma](/scores/frantisek-ignac-antonin-tuma)
