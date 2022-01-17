@@ -5,6 +5,10 @@ include:
   - .htaccess
   - _pages
 
+exclude:
+  - pat.py
+  - prepare_score_pages.py
+
 theme: minimal-mistakes-jekyll
 minimal_mistakes_skin    : "contrast"
 
