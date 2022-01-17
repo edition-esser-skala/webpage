@@ -34,7 +34,8 @@ IGNORED_REPOS = ["ees-template", "ees-tools", "haydn-m-proprium-missae",
 IGNORED_WORKS = ["template"]
 
 SLUG_REPLACE = {
-    " ": "-", ",": "",
+    " ": "-", ":": "-", "/": "-", ".": "-",
+    ",": "", "(": "", ")": "",
     "á": "a", "ä": "ae", "æ": "ae",
     "í": "i",
     "ö": "oe", "œ": "oe",
@@ -75,14 +76,29 @@ PART_REPLACE = {
 
 # Templates ---------------------------------------------------------------
 
-HEADER_TEMPLATE = """\
+PAGE_TEMPLATE = """\
 ---
 title: {title}
 permalink: /scores/{slug}
 sidebar:
   nav: scores
 ---
+
+
+## Overview
+
+|ID|Title|Genre|
+|--|-----|-----|
+{rows}
+{{: id="toctable" class="overview-table"}}
+
+
+## Works
+
+{details}
 """
+
+TABLEROW_TEMPLATE = "|[{id}](#work-{id_slug})|{title}|{genre}|"
 
 RELEASE_LINK_TEMPLATE = ("[{version}](https://github.com/" f"{GITHUB_ORG_NAME}"
                          "/{repo}/releases/tag/{version})&nbsp;({date})")
@@ -97,6 +113,7 @@ PDF_LINK_TEMPLATE = ("[{part_name}](https://edition.esser-skala.at/assets/"
 
 WORK_TEMPLATE = """\
 ### {title}<br/><span class="work-subtitle">{subtitle}</span>
+{{: #work-{id_slug}}}
 
 |<span class="label-col">genre</span>|{genre}|
 |<span class="label-col">scoring</span>|{scoring}|
@@ -126,7 +143,7 @@ in contemporary manuscripts.
 |MH|Title|Genre|
 |--|-----|-----|
 {rows}
-{{: id="toctable" class="overview-table"}}
+{{: id="toctable-mh" class="overview-table"}}
 
 
 ## Works
@@ -178,6 +195,16 @@ scores:
       url: /projects/proprium-missae
 {}
 """
+
+
+
+# General functions -------------------------------------------------------
+
+def slugify(s):
+    slug = s.lower()
+    for k, v in SLUG_REPLACE.items():
+        slug = slug.replace(k, v)
+    return slug
 
 
 
@@ -388,13 +415,11 @@ def generate_pages(works):
             title = f"{composer.last} {composer.suffix}, {composer.first}"
             slug = f"{composer.first}-{composer.last}-{composer.suffix}"
 
-        slug = slug.lower()
-        for k, v in SLUG_REPLACE.items():
-            slug = slug.replace(k, v)
-
-        page_contents = [HEADER_TEMPLATE.format(slug=slug, title=title)]
+        slug = slugify(slug)
 
         # works
+        details = []
+        rows = []
         for work in sorted(works[composer], key=itemgetter("title")):
             current_release = work["releases"][0]
 
@@ -426,11 +451,20 @@ def generate_pages(works):
                 )
             work["assets"] = " ".join(assets)
 
-            page_contents.append(WORK_TEMPLATE.format(**work))
+            work["id_slug"] = slugify(work["id"])
+            details.append(WORK_TEMPLATE.format(**work))
+            rows.append(TABLEROW_TEMPLATE.format(**work))
 
         # save composer page
         with open(f"_pages/scores/{slug}.md", "w") as f:
-            f.write("\n".join(page_contents))
+            f.write(
+                PAGE_TEMPLATE.format(
+                    slug=slug,
+                    title=title,
+                    rows="\n".join(rows),
+                    details="\n".join(details)
+                )
+            )
 
         # add navigation entry
         last_initial = composer.last[0]
@@ -462,4 +496,8 @@ if __name__ == "__main__":
                       "Technical documentation",)
     highlight_lilypond("_pages/about/technical-documentation.md")
     works = collect_metadata()
+    # with open('saved_works_dict.pkl', 'wb') as f:
+    #     pickle.dump(works, f)
+    # with open('saved_works_dict.pkl', 'rb') as f:
+    #     works = pickle.load(f)
     generate_pages(works)
