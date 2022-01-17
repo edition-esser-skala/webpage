@@ -1,0 +1,45 @@
+name: Build and deploy site
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install GitPython pandas PyGithub Pygments PyYAML python-dateutil
+          wget https://raw.githubusercontent.com/edition-esser-skala/ees-tools/main/read_metadata.py
+          wget https://raw.githubusercontent.com/edition-esser-skala/ees-tools/main/instrument_data.csv
+
+      - name: Generate pages
+        env:
+          GH_API_KEY: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p _data _pages/projects _pages/scores
+          python prepare_score_pages.py
+
+      - name: Build webpage
+        uses: jerryjvl/jekyll-build-action@v1
+
+      - name: Deploy via rsync
+        uses: burnett01/rsync-deployments@5.1
+        with:
+          switches: -avzr --delete
+          path: _site/
+          remote_path: html/edition/
+          remote_host: ${{ secrets.DEPLOY_HOST }}
+          remote_user: ${{ secrets.DEPLOY_USER }}
+          remote_key: ${{ secrets.DEPLOY_KEY }}
