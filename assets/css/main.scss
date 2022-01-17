@@ -93,17 +93,57 @@ table.overview-table thead {
 
 table.overview-table th {
   border: 0;
-  padding: 0em 0.5em;
+  padding: 0em 1em 0em 0.5em;
 }
 
 table.overview-table td {
   border: 0;
-  padding: 0em 0.5em;
+  padding: 0em 1em 0em 0.5em;
 }
 
 table.overview-table a {
   text-decoration: none;
 }
+
+
+// datatable
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc,
+table.dataTable thead .sorting_asc_disabled,
+table.dataTable thead .sorting_desc_disabled {
+  cursor: pointer;
+  *cursor: hand;
+  background-repeat: no-repeat;
+  background-position: center right;
+}
+table.dataTable thead .sorting {
+  background-image: url("/assets/images/datatable/sort_both.png");
+}
+table.dataTable thead .sorting_asc {
+  background-image: url("/assets/images/datatable/sort_asc.png") !important;
+}
+table.dataTable thead .sorting_desc {
+  background-image: url("/assets/images/datatable/sort_desc.png") !important;
+}
+table.dataTable thead .sorting_asc_disabled {
+  background-image: url("/assets/images/datatable/sort_asc_disabled.png");
+}
+table.dataTable thead .sorting_desc_disabled {
+  background-image: url("/assets/images/datatable/sort_desc_disabled.png");
+}
+table.dataTable tbody tr.odd {
+  background-color: #f9f9f9;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+  border-radius: 5px;
+  box-shadow: none;
+  padding: 5px;
+  background-color: #f9f9f9;
+  margin-left: 3px;
+}
+
 
 
 // LilyPond syntax theme

@@ -157,3 +157,7 @@ defaults:
       comments: false
       share: true
       related: true
+
+after_footer_scripts:
+  - https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js
+  - /assets/js/format_toctable.js

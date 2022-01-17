@@ -126,7 +126,7 @@ in contemporary manuscripts.
 |MH|Title|Genre|
 |--|-----|-----|
 {rows}
-{{: class="overview-table"}}
+{{: id="toctable" class="overview-table"}}
 
 
 ## Works
