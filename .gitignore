@@ -3,7 +3,7 @@
 .jekyll-metadata
 .sass-cache
 _data
-_github_api_cache/redirects.sqlite
+_github_api_cache
 _pages/about/editorial-guidelines.md
 _pages/about/technical-documentation.md
 _pages/projects
