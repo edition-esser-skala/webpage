@@ -1,7 +1,7 @@
 ---
 layout: splash
 permalink: /
-tagline: Open-source music publishing since 2016.
+tagline: Open Content music publishing since 2016.
 header:
   overlay_color: "#000"
   overlay_filter: "0.33"

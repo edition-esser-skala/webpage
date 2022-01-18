@@ -253,7 +253,7 @@ def prepare_projects():
 
     work_dirs = [w.name for w in repo.get_contents("works")
                  if w.name not in IGNORED_WORKS]
-    work_dirs = ["453", "46", "145", "142"]  # for testing
+    # work_dirs = ["453", "46", "145", "142"]  # for testing
 
     works = []
     for counter, work_dir in enumerate(work_dirs):
@@ -358,7 +358,7 @@ def collect_metadata():
     repos = GITHUB_ORG.get_repos()
 
     for counter, repo in enumerate(repos):
-        if counter > 3: break  # for testing
+        # if counter > 3: break  # for testing
         counter_str = f"({counter + 1}/{repos.totalCount})"
         if repo.name in IGNORED_REPOS:
             print(f"{counter_str} Ignoring {repo.name} (blacklisted)")
