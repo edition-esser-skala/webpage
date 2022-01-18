@@ -1,6 +1,6 @@
 ---
 title: Overview
-permalink: /about
+permalink: /about/
 header:
   image: /assets/images/header_about.jpg
 sidebar:

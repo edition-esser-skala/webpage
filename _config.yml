@@ -22,7 +22,7 @@ name                     : Wolfgang Esser-Skala
 description              : Open-source music publishing since 2016.
 url                      : https://edition.esser-skala.at
 baseurl                  : ""
-repository               : skafdasschaf/webpage-ees
+repository               : edition-esser-skala/webpage
 logo                     : /assets/images/logo_full_bg_white.png
 breadcrumbs              : false
 atom_feed:

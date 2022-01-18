@@ -1,6 +1,6 @@
 ---
 title: Sources for digital versions
-permalink: /about/sources-for-digital-versions
+permalink: /about/sources-for-digital-versions/
 sidebar:
   nav: about
 ---

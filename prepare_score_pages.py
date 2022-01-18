@@ -89,7 +89,7 @@ PART_REPLACE = {
 PAGE_TEMPLATE = """\
 ---
 title: {title}
-permalink: /scores/{slug}
+permalink: /scores/{slug}/
 sidebar:
   nav: scores
 ---
@@ -138,7 +138,7 @@ WORK_TEMPLATE = """\
 PROJECT_PAGE_TEMPLATE = """\
 ---
 title: Michael Haydn's Proprium Missæ
-permalink: /projects/proprium-missae
+permalink: /projects/proprium-missae/
 sidebar:
   nav: scores
 ---
@@ -304,7 +304,7 @@ def get_markdown_file(file, outfile, title):
     header = (
         "---\n"
         f"title: {title}\n"
-        f"permalink: /about/{outfile[:-3]}\n"
+        f"permalink: /about/{outfile[:-3]}/\n"
         "toc: true\n"
         "toc_label: Contents\n"
         "toc_sticky: true\n"

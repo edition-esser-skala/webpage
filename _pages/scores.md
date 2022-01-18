@@ -1,6 +1,6 @@
 ---
 title: Scores
-permalink: /scores
+permalink: /scores/
 header:
   image: /assets/images/header_scores.jpg
 sidebar:
