@@ -10,6 +10,7 @@ from pygments.lexers import LilyPondLexer
 from pygments.formatters import HtmlFormatter
 import re
 from read_metadata import parse_metadata
+import requests_cache
 import yaml
 
 try:
@@ -21,12 +22,21 @@ except ModuleNotFoundError:
 Composer = namedtuple("Composer", "first last suffix")
 
 
+requests_cache.install_cache(
+    "_github_api_cache",
+    backend="filesystem",
+    serializer="yaml",
+    ignored_parameters=["Authorization"],
+    urls_expire_after={"*rate_limit*": 0}
+)
+
+
 
 # Constants ---------------------------------------------------------------
 
+GITHUB = Github(TOKEN, user_agent = "edition-esser-skala")
 GITHUB_ORG_NAME = "edition-esser-skala"
-
-GITHUB_ORG = Github(TOKEN).get_organization(GITHUB_ORG_NAME)
+GITHUB_ORG = GITHUB.get_organization(GITHUB_ORG_NAME)
 
 IGNORED_REPOS = ["ees-template", "ees-tools", "haydn-m-proprium-missae",
                  "sacral-lyrics", "webpage"]
@@ -206,6 +216,9 @@ def slugify(s):
         slug = slug.replace(k, v)
     return slug
 
+def print_rates():
+    print(GITHUB.get_rate_limit().core)
+
 
 
 # Prepare projects --------------------------------------------------------
@@ -240,7 +253,7 @@ def prepare_projects():
 
     work_dirs = [w.name for w in repo.get_contents("works")
                  if w.name not in IGNORED_WORKS]
-    # work_dirs = ["453", "46", "145", "142"]  # for testing
+    work_dirs = ["453", "46", "145", "142"]  # for testing
 
     works = []
     for counter, work_dir in enumerate(work_dirs):
@@ -345,7 +358,7 @@ def collect_metadata():
     repos = GITHUB_ORG.get_repos()
 
     for counter, repo in enumerate(repos):
-        # if counter > 3: break  # for testing
+        if counter > 3: break  # for testing
         counter_str = f"({counter + 1}/{repos.totalCount})"
         if repo.name in IGNORED_REPOS:
             print(f"{counter_str} Ignoring {repo.name} (blacklisted)")
@@ -487,6 +500,7 @@ def generate_pages(works):
 # Execute workflow --------------------------------------------------------
 
 if __name__ == "__main__":
+    print_rates()
     prepare_projects()
     get_markdown_file("editorial_guidelines.md",
                       "editorial-guidelines.md",
@@ -496,8 +510,5 @@ if __name__ == "__main__":
                       "Technical documentation",)
     highlight_lilypond("_pages/about/technical-documentation.md")
     works = collect_metadata()
-    # with open('saved_works_dict.pkl', 'wb') as f:
-    #     pickle.dump(works, f)
-    # with open('saved_works_dict.pkl', 'rb') as f:
-    #     works = pickle.load(f)
     generate_pages(works)
+    print_rates()

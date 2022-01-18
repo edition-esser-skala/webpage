@@ -1,0 +1,70 @@
+_content: !!binary |
+  W3sibmFtZSI6InYyLjAuMCIsInppcGJhbGxfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9y
+  ZXBvcy9lZGl0aW9uLWVzc2VyLXNrYWxhL2dhbHVwcGktbmlzaS1kb21pbnVzLUJ1ckctSUktNDgv
+  emlwYmFsbC9yZWZzL3RhZ3MvdjIuMC4wIiwidGFyYmFsbF91cmwiOiJodHRwczovL2FwaS5naXRo
+  dWIuY29tL3JlcG9zL2VkaXRpb24tZXNzZXItc2thbGEvZ2FsdXBwaS1uaXNpLWRvbWludXMtQnVy
+  Ry1JSS00OC90YXJiYWxsL3JlZnMvdGFncy92Mi4wLjAiLCJjb21taXQiOnsic2hhIjoiZjRjNjFk
+  MjY4ODYxMDg3YWIzZDcxNjJmY2IyNmUxYTQ4NjUzN2ZlYyIsInVybCI6Imh0dHBzOi8vYXBpLmdp
+  dGh1Yi5jb20vcmVwb3MvZWRpdGlvbi1lc3Nlci1za2FsYS9nYWx1cHBpLW5pc2ktZG9taW51cy1C
+  dXJHLUlJLTQ4L2NvbW1pdHMvZjRjNjFkMjY4ODYxMDg3YWIzZDcxNjJmY2IyNmUxYTQ4NjUzN2Zl
+  YyJ9LCJub2RlX2lkIjoiTURNNlVtVm1PVGszTXpRM01UQTZjbVZtY3k5MFlXZHpMM1l5TGpBdU1B
+  PT0ifSx7Im5hbWUiOiJ2MS4wIiwiemlwYmFsbF91cmwiOiJodHRwczovL2FwaS5naXRodWIuY29t
+  L3JlcG9zL2VkaXRpb24tZXNzZXItc2thbGEvZ2FsdXBwaS1uaXNpLWRvbWludXMtQnVyRy1JSS00
+  OC96aXBiYWxsL3JlZnMvdGFncy92MS4wIiwidGFyYmFsbF91cmwiOiJodHRwczovL2FwaS5naXRo
+  dWIuY29tL3JlcG9zL2VkaXRpb24tZXNzZXItc2thbGEvZ2FsdXBwaS1uaXNpLWRvbWludXMtQnVy
+  Ry1JSS00OC90YXJiYWxsL3JlZnMvdGFncy92MS4wIiwiY29tbWl0Ijp7InNoYSI6ImE2MDMyZTE5
+  YTJlNDExOWM4YjIxY2QzNTdjZjIyZDZjNDk3YmFlNzkiLCJ1cmwiOiJodHRwczovL2FwaS5naXRo
+  dWIuY29tL3JlcG9zL2VkaXRpb24tZXNzZXItc2thbGEvZ2FsdXBwaS1uaXNpLWRvbWludXMtQnVy
+  Ry1JSS00OC9jb21taXRzL2E2MDMyZTE5YTJlNDExOWM4YjIxY2QzNTdjZjIyZDZjNDk3YmFlNzki
+  fSwibm9kZV9pZCI6Ik1ETTZVbVZtT1RrM016UTNNVEE2Y21WbWN5OTBZV2R6TDNZeExqQT0ifV0=
+created_at: '2022-01-18T07:27:31.472200'
+elapsed: 0.257619
+encoding: utf-8
+headers:
+  Access-Control-Allow-Origin: '*'
+  Access-Control-Expose-Headers: ETag, Link, Location, Retry-After, X-GitHub-OTP,
+    X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource,
+    X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type,
+    X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset
+  Cache-Control: private, max-age=60, s-maxage=60
+  Content-Encoding: gzip
+  Content-Security-Policy: default-src 'none'
+  Content-Type: application/json; charset=utf-8
+  Date: Tue, 18 Jan 2022 07:27:31 GMT
+  ETag: W/"4bccab17356975b4ccdb08471be8834152ccb60575bc128877b54a9e479bc3c1"
+  Last-Modified: Sun, 02 Jan 2022 16:14:02 GMT
+  Referrer-Policy: origin-when-cross-origin, strict-origin-when-cross-origin
+  Server: GitHub.com
+  Strict-Transport-Security: max-age=31536000; includeSubdomains; preload
+  Transfer-Encoding: chunked
+  Vary: Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding, Accept, X-Requested-With
+  X-Accepted-OAuth-Scopes: ''
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: deny
+  X-GitHub-Media-Type: github.v3; format=json
+  X-GitHub-Request-Id: D596:AF98:1E42B8B:1EB8495:61E66BE3
+  X-OAuth-Scopes: ''
+  X-RateLimit-Limit: '5000'
+  X-RateLimit-Remaining: '4619'
+  X-RateLimit-Reset: '1642491080'
+  X-RateLimit-Resource: core
+  X-RateLimit-Used: '381'
+  X-XSS-Protection: '0'
+raw:
+  decode_content: false
+  reason: OK
+  status: 200
+  version: 11
+reason: OK
+request:
+  body: !!binary |
+    Tm9uZQ==
+  headers:
+    Accept: '*/*'
+    Accept-Encoding: gzip, deflate
+    Connection: keep-alive
+    User-Agent: edition-esser-skala
+  method: GET
+  url: https://api.github.com/repos/edition-esser-skala/galuppi-nisi-dominus-BurG-II-48/tags
+status_code: 200
+url: https://api.github.com/repos/edition-esser-skala/galuppi-nisi-dominus-BurG-II-48/tags

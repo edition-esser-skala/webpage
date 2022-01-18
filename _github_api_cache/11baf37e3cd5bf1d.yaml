@@ -1,0 +1,71 @@
+_content: !!binary |
+  W3sibmFtZSI6InYyLjAuMCIsInppcGJhbGxfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9y
+  ZXBvcy9lZGl0aW9uLWVzc2VyLXNrYWxhL2FkbGdhc3Nlci1saXRhbmlhZS1sYXVyZXRhbmFlLUFX
+  Vi0zLjA1L3ppcGJhbGwvcmVmcy90YWdzL3YyLjAuMCIsInRhcmJhbGxfdXJsIjoiaHR0cHM6Ly9h
+  cGkuZ2l0aHViLmNvbS9yZXBvcy9lZGl0aW9uLWVzc2VyLXNrYWxhL2FkbGdhc3Nlci1saXRhbmlh
+  ZS1sYXVyZXRhbmFlLUFXVi0zLjA1L3RhcmJhbGwvcmVmcy90YWdzL3YyLjAuMCIsImNvbW1pdCI6
+  eyJzaGEiOiIyY2M0ZWNiNzIwOWVlNWI5ODY0YjIzMDE0YTZjMzU4MGQ4MTYxMWEwIiwidXJsIjoi
+  aHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9yZXBvcy9lZGl0aW9uLWVzc2VyLXNrYWxhL2FkbGdhc3Nl
+  ci1saXRhbmlhZS1sYXVyZXRhbmFlLUFXVi0zLjA1L2NvbW1pdHMvMmNjNGVjYjcyMDllZTViOTg2
+  NGIyMzAxNGE2YzM1ODBkODE2MTFhMCJ9LCJub2RlX2lkIjoiTURNNlVtVm1PVGszTXpVMU1EVTZj
+  bVZtY3k5MFlXZHpMM1l5TGpBdU1BPT0ifSx7Im5hbWUiOiJ2MS4wIiwiemlwYmFsbF91cmwiOiJo
+  dHRwczovL2FwaS5naXRodWIuY29tL3JlcG9zL2VkaXRpb24tZXNzZXItc2thbGEvYWRsZ2Fzc2Vy
+  LWxpdGFuaWFlLWxhdXJldGFuYWUtQVdWLTMuMDUvemlwYmFsbC9yZWZzL3RhZ3MvdjEuMCIsInRh
+  cmJhbGxfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9yZXBvcy9lZGl0aW9uLWVzc2VyLXNr
+  YWxhL2FkbGdhc3Nlci1saXRhbmlhZS1sYXVyZXRhbmFlLUFXVi0zLjA1L3RhcmJhbGwvcmVmcy90
+  YWdzL3YxLjAiLCJjb21taXQiOnsic2hhIjoiZjIwNDk1ZjZkZTdkYTcwOWY1OWQ3MGIwODQwYWIz
+  ZTg3OTQ3MzRkNSIsInVybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vcmVwb3MvZWRpdGlvbi1l
+  c3Nlci1za2FsYS9hZGxnYXNzZXItbGl0YW5pYWUtbGF1cmV0YW5hZS1BV1YtMy4wNS9jb21taXRz
+  L2YyMDQ5NWY2ZGU3ZGE3MDlmNTlkNzBiMDg0MGFiM2U4Nzk0NzM0ZDUifSwibm9kZV9pZCI6Ik1E
+  TTZVbVZtT1RrM016VTFNRFU2Y21WbWN5OTBZV2R6TDNZeExqQT0ifV0=
+created_at: '2022-01-18T07:27:37.002472'
+elapsed: 0.154042
+encoding: utf-8
+headers:
+  Access-Control-Allow-Origin: '*'
+  Access-Control-Expose-Headers: ETag, Link, Location, Retry-After, X-GitHub-OTP,
+    X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource,
+    X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type,
+    X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset
+  Cache-Control: private, max-age=60, s-maxage=60
+  Content-Encoding: gzip
+  Content-Security-Policy: default-src 'none'
+  Content-Type: application/json; charset=utf-8
+  Date: Tue, 18 Jan 2022 07:27:36 GMT
+  ETag: W/"4b6b09ac12703cf6bc66f500a26d92e02306a626f6e52a0fbb3ca6ac98206a48"
+  Last-Modified: Tue, 07 Dec 2021 17:55:46 GMT
+  Referrer-Policy: origin-when-cross-origin, strict-origin-when-cross-origin
+  Server: GitHub.com
+  Strict-Transport-Security: max-age=31536000; includeSubdomains; preload
+  Transfer-Encoding: chunked
+  Vary: Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding, Accept, X-Requested-With
+  X-Accepted-OAuth-Scopes: ''
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: deny
+  X-GitHub-Media-Type: github.v3; format=json
+  X-GitHub-Request-Id: D596:AF98:1E43489:1EB8DB5:61E66BE8
+  X-OAuth-Scopes: ''
+  X-RateLimit-Limit: '5000'
+  X-RateLimit-Remaining: '4605'
+  X-RateLimit-Reset: '1642491080'
+  X-RateLimit-Resource: core
+  X-RateLimit-Used: '395'
+  X-XSS-Protection: '0'
+raw:
+  decode_content: false
+  reason: OK
+  status: 200
+  version: 11
+reason: OK
+request:
+  body: !!binary |
+    Tm9uZQ==
+  headers:
+    Accept: '*/*'
+    Accept-Encoding: gzip, deflate
+    Connection: keep-alive
+    User-Agent: edition-esser-skala
+  method: GET
+  url: https://api.github.com/repos/edition-esser-skala/adlgasser-litaniae-lauretanae-AWV-3.05/tags
+status_code: 200
+url: https://api.github.com/repos/edition-esser-skala/adlgasser-litaniae-lauretanae-AWV-3.05/tags
