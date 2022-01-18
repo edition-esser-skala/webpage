@@ -20,5 +20,3 @@ This website is privately provided and maintained by Wolfgang Esser-Skala, Wolfg
 Typeset with [Source Sans](https://github.com/adobe-fonts/source-sans/) (main text), [Fredericka the Great](https://fonts.google.com/specimen/Fredericka+the+Great) (headings), and [Fira Code](https://github.com/tonsky/FiraCode) (source code).
 
 Powered by [Jekyll](https://jekyllrb.com/) and [Minimal Mistakes](https://mademistakes.com/work/minimal-mistakes-jekyll-theme/).
-
-Last modified at {% last_modified_at %Y-%m-%d %}.
