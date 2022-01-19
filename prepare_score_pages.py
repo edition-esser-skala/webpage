@@ -11,7 +11,6 @@ from pygments.lexers import LilyPondLexer
 from pygments.formatters import HtmlFormatter
 import re
 from read_metadata import parse_metadata
-import requests_cache
 import tempfile
 import yaml
 
@@ -22,15 +21,6 @@ except ModuleNotFoundError:
 
 
 Composer = namedtuple("Composer", "first last suffix")
-
-
-requests_cache.install_cache(
-    "_github_api_cache",
-    backend="filesystem",
-    serializer="yaml",
-    ignored_parameters=["Authorization"],
-    urls_expire_after={"*rate_limit*": 0}
-)
 
 
 
