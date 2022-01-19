@@ -2,6 +2,7 @@
 
 from collections import namedtuple
 import dateutil.parser
+import git
 from github import Github
 from operator import attrgetter, itemgetter
 import os
@@ -11,6 +12,7 @@ from pygments.formatters import HtmlFormatter
 import re
 from read_metadata import parse_metadata
 import requests_cache
+import tempfile
 import yaml
 
 try:
@@ -147,6 +149,8 @@ The *Proprium Missæ* is an emerging collection of all known short liturgical
 works by Johann Michael Haydn, in particular those that are freely available
 in contemporary manuscripts.
 
+*Current release: {last_tag} containing {n_works} works*
+
 
 ## Overview
 
@@ -249,52 +253,64 @@ def make_part_name(filename, extension):
 
 def prepare_projects():
     print("Preparing the Proprium Missae project")
-    repo = GITHUB_ORG.get_repo("haydn-m-proprium-missae")
 
-    work_dirs = [w.name for w in repo.get_contents("works")
-                 if w.name not in IGNORED_WORKS]
-    # work_dirs = ["453", "46", "145", "142"]  # for testing
+    last_tag = GITHUB_ORG.get_repo("haydn-m-proprium-missae").get_tags()[0].name
 
-    works = []
-    for counter, work_dir in enumerate(work_dirs):
-        counter += 1
-        print(f"({counter}/{len(work_dirs)}) Analyzing {work_dir}")
-        metadata = parse_metadata(
-            string=repo
-                   .get_contents(f"works/{work_dir}/metadata.yaml")
-                   .decoded_content,
-            checksum_from=None,
-            check_license=False
+    with tempfile.TemporaryDirectory() as repo_dir:
+        git.Repo.clone_from(
+            "https://github.com/edition-esser-skala/haydn-m-proprium-missae",
+            repo_dir,
+            multi_options=["--depth 1", f"--branch {last_tag}"]
         )
 
-        metadata = format_metadata(metadata)
+        work_dirs = [w for w in os.listdir(f"{repo_dir}/works")
+                     if w not in IGNORED_WORKS]
+        # work_dirs = ["453", "46", "145", "142"]  # for testing
 
-        metadata["id_int"] = int(metadata["id"].removeprefix("MH "))
-
-        if "festival" not in metadata:
-            metadata["festival"] = "–"
-
-        assets = []
-        for score in repo.get_contents(f"works/{work_dir}/scores"):
-            assets.append(
-                PDF_LINK_TEMPLATE.format(
-                    part_name=make_part_name(score.name, ".ly"),
-                    work=work_dir,
-                    file=score.name.replace(".ly", ".pdf"),
-                    cls=".full-score" if score.name == "full_score.ly" else ""
-                )
+        works = []
+        for counter, work_dir in enumerate(work_dirs):
+            counter += 1
+            print(f"({counter}/{len(work_dirs)}) Analyzing {work_dir}")
+            metadata = parse_metadata(
+                f"{repo_dir}/works/{work_dir}/metadata.yaml",
+                checksum_from=None,
+                check_license=False
             )
-        metadata["assets"] = " ".join(assets)
 
-        works.append(metadata)
+            metadata = format_metadata(metadata)
 
+            metadata["id_int"] = int(metadata["id"].removeprefix("MH "))
+
+            if "festival" not in metadata:
+                metadata["festival"] = "–"
+
+            assets = []
+            for score in os.listdir(f"{repo_dir}/works/{work_dir}/scores"):
+                assets.append(
+                    PDF_LINK_TEMPLATE.format(
+                        part_name=make_part_name(score, ".ly"),
+                        work=work_dir,
+                        file=score.replace(".ly", ".pdf"),
+                        cls=".full-score" if score == "full_score.ly" else ""
+                    )
+                )
+            metadata["assets"] = " ".join(assets)
+
+            works.append(metadata)
 
     works = sorted(works, key=itemgetter("id_int"))
     rows = "\n".join([PROJECT_TABLEROW_TEMPLATE.format(**w) for w in works])
     details = "\n".join([PROJECT_WORK_TEMPLATE.format(**w) for w in works])
 
     with open("_pages/projects/proprium-missae.md", "w") as f:
-        f.write(PROJECT_PAGE_TEMPLATE.format(rows=rows, details=details))
+        f.write(
+            PROJECT_PAGE_TEMPLATE.format(
+                last_tag=last_tag,
+                n_works=len(works),
+                rows=rows,
+                details=details
+            )
+        )
 
 
 
