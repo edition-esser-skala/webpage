@@ -370,6 +370,10 @@ def collect_metadata():
             print(f"{counter_str} Ignoring {repo.name} (blacklisted)")
             continue
 
+        if repo.private:
+            print(f"{counter_str} Ignoring {repo.name} (private)")
+            continue
+
         releases = repo.get_releases()
         if releases.totalCount == 0:
             print(f"{counter_str} Ignoring {repo.name} (no releases)")
