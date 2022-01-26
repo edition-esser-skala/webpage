@@ -17,7 +17,7 @@ import yaml
 try:
     from pat import TOKEN
 except ModuleNotFoundError:
-    TOKEN = os.environ["GH_API_KEY"]
+    TOKEN = os.environ["GH_API_TOKEN"]
 
 
 Composer = namedtuple("Composer", "first last suffix")

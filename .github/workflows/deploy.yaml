@@ -12,6 +12,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Get app token
+        id: get_app_token
+        uses: peter-murray/workflow-application-token-action@v1
+        with:
+          application_id: ${{ secrets.APPLICATION_ID }}
+          application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -26,7 +33,7 @@ jobs:
 
       - name: Generate pages
         env:
-          GH_API_KEY: ${{ secrets.GITHUB_TOKEN }}
+          GH_API_TOKEN: ${{ steps.get_app_token.outputs.token }}
         run: |
           mkdir -p _data _pages/projects _pages/scores
           python prepare_score_pages.py
