@@ -21,4 +21,4 @@ Typeset with [Source Sans](https://github.com/adobe-fonts/source-sans/) (main te
 
 Powered by [Jekyll](https://jekyllrb.com/) and [Minimal Mistakes](https://mademistakes.com/work/minimal-mistakes-jekyll-theme/).
 
-Last modified at {{ site.time | date: "%Y-%m-%e" }}.
+Last modified at {{ site.time | date: "%Y-%m-%d" }}.
