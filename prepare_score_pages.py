@@ -269,7 +269,9 @@ def prepare_projects():
 
             metadata = format_metadata(metadata)
 
-            metadata["id_int"] = int(metadata["id"].removeprefix("MH "))
+            metadata["id_int"] = int(
+                re.match("MH ([^/]+)", metadata["id"]).group(1)
+            )
 
             if "festival" not in metadata:
                 metadata["festival"] = "–"
