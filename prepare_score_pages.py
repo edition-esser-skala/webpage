@@ -222,6 +222,7 @@ def format_metadata(metadata):
     scoring = re.sub(r"\\\\", " ", scoring)
     scoring = re.sub(r"\\flat\s(.)", r"\1♭", scoring)
     scoring = re.sub(r"\\sharp\s(.)", r"\1♯", scoring)
+    scoring = re.sub(r"\\\s", r" ", scoring)
     metadata["scoring"] = scoring
 
     metadata["subtitle"] = re.sub(r"\\newline\s*",
