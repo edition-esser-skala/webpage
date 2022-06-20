@@ -31,6 +31,7 @@ atom_feed:
 search                   : true
 search_full_content      : true
 search_provider          : lunr
+date_format              : "%A, %-d %B %Y"
 
 
 # social sharing

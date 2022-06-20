@@ -3,5 +3,5 @@ title: News
 layout: posts
 permalink: /news/
 header:
-  image: /assets/images/header_about.jpg
+  image: /assets/images/header_news.jpg
 ---

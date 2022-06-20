@@ -1,6 +1,6 @@
 ---
 title: Quarterly update Q1/2022
-excerpt: Albrechtsberger · Caldara · Eybler · Haydn M · Hofmann · Königsperger · Reutter d.J. · Rolle · Tuma
+excerpt: Albrechtsberger · Caldara · Eybler · Haydn M · Hofmann · Königsperger · Reutter d.J. · Rolle · Tůma
 ---
 
 ## New editions

@@ -3,6 +3,7 @@ title: Quarterly update Q2/2022
 excerpt: Albrechtsberger · Caldara · Danzi · Haydn M · Scheibe · Tůma
 ---
 
+## New editions
 
 ### Albrechtsberger, Johann Georg
 
@@ -41,3 +42,7 @@ We continue our *Caldara@Dresden* project with editions of the remaining masses 
 ### Tůma, František Ignác Antonín
 
 - [Vesperæ de Confessore](/scores/frantisek-ignac-antonin-tuma/#work-d-dl-mus-2968-d-508) (D-Dl Mus.2968-D-508)
+
+
+
+## Performances
