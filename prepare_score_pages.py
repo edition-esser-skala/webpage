@@ -175,6 +175,8 @@ main:
     url: /
   - title: About
     url: /about
+  - title: News
+    url: /news
   - title: Scores
     url: /scores
   - title: Contact

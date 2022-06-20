@@ -48,28 +48,8 @@ social:
 author:
   name             : Wolfgang Esser-Skala
   avatar           : assets/images/avatar.jpg
-  bio              : Founder and CEO at Edition Esser-Skala
-  location         : Koppl, Austria
-  email            : wolfgang@esser-skala.at
-  links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      # url: "mailto:your.name@email.com"
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      # url: "https://your-website.com"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      # url: "https://twitter.com/"
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url: "https://facebook.com/"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      # url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/"
+  bio              : Editor
+  email            : edition@esser-skala.at
 
 
 # site footer
@@ -126,7 +106,7 @@ sass:
 
 
 # outputting
-permalink: /:categories/:title/
+permalink: /news/:year/:month/:day/:title/
 # paginate: 5 # amount of posts to show
 # paginate_path: /page:num/
 timezone: Europe/Vienna
@@ -157,10 +137,11 @@ defaults:
     values:
       layout: single
       author_profile: true
-      read_time: true
+      show_date: true
+      read_time: false
       comments: false
       share: true
-      related: true
+      related: false
 
 after_footer_scripts:
   - https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js
