@@ -111,6 +111,25 @@ def format_metadata(metadata: dict, gh_org_name: str) -> dict:
     Returns:
         dict: Reformatted metadata.
     """
+    # ensure that the composer is complete
+    metadata["composer"] = metadata.get("composer", {"last": "(unknown)"})
+    metadata["composer"]["first"] = metadata["composer"].get("first", "")
+    metadata["composer"]["suffix"] = metadata["composer"].get("suffix", "")
+
+    # add an id
+    if "id" not in metadata or metadata["id"] is None:
+        for source in metadata["sources"].values():
+            if source.get("principal", False):
+                metadata["id"] = f"({source['siglum']} {source['shelfmark']})"
+                break
+
+    # add a subtitle
+    if "subtitle" not in metadata:
+        metadata["subtitle"] = metadata["id"]
+    else:
+        metadata["subtitle"] = f"{metadata['subtitle']}<br/>{metadata['id']}"
+    metadata["subtitle"] = metadata["subtitle"].replace(r"\\", " ")
+
     # translate scoring from LaTeX to human-readable
     scoring = re.sub(r"\\newline", " ", metadata["scoring"])
     scoring = re.sub(r"\\\\", " ", scoring)
@@ -120,16 +139,9 @@ def format_metadata(metadata: dict, gh_org_name: str) -> dict:
     metadata["scoring"] = scoring
 
     # misc fields
-    metadata["subtitle"] = re.sub(r"\\newline\s*",
-                                  "<br/>",
-                                  metadata["subtitle"]
-                           ).replace(r"\\", " ")
-
     metadata["license"] = LICENSES[metadata["license"]]
     metadata["id_slug"] = slugify(metadata["id"])
-
-    if "imslp" not in metadata:
-        metadata["imslp"] = ""
+    metadata["imslp"] = metadata.get("imslp", "")
 
     # releases
     if "releases" in metadata:

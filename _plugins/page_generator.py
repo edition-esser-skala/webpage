@@ -13,7 +13,6 @@ from pygments.lexers.lilypond import LilyPondLexer
 from pygments.formatters.html import HtmlFormatter
 import yaml
 
-from read_metadata import parse_metadata
 from common_functions import (Composer, format_metadata, get_work_list,
                               slugify, PAGE_TEMPLATE)
 from project_haydn import add_project_haydn
@@ -160,12 +159,11 @@ def collect_metadata(gh_org: Organization,
             continue
 
         print(f"{counter_str} Analyzing {repo.name}")
-        metadata = parse_metadata(
-            string=repo  # type: ignore
-                   .get_contents("metadata.yaml", ref=releases[0].tag_name)
-                   .decoded_content,
-            checksum_from=None,
-            check_license=False
+        metadata = yaml.load(
+            repo  # type: ignore
+            .get_contents("metadata.yaml", ref=releases[0].tag_name)
+            .decoded_content,
+            Loader=yaml.SafeLoader
         )
 
         metadata["repo"] = repo.name

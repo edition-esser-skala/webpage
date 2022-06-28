@@ -5,10 +5,10 @@ import tempfile
 
 import git
 from github.Organization import Organization
+import yaml
 
 from common_functions import (format_metadata, make_part_name,
                               PAGE_TEMPLATE, TABLEROW_TEMPLATE)
-from read_metadata import parse_metadata
 
 
 IGNORED_WORKS = ["template"]
@@ -63,16 +63,13 @@ def add_project_haydn(gh_org: Organization) -> None:
         for counter, work_dir in enumerate(work_dirs):
             counter += 1
             print(f"({counter}/{len(work_dirs)}) Analyzing {work_dir}")
-            metadata = parse_metadata(
-                f"{repo_dir}/works/{work_dir}/metadata.yaml",
-                checksum_from=None,
-                check_license=False
-            )
+            with open(f"{repo_dir}/works/{work_dir}/metadata.yaml",
+                      encoding="utf-8") as f:
+                metadata = yaml.load(f, Loader=yaml.SafeLoader)
 
             metadata = format_metadata(metadata, gh_org.login)
 
-            if "festival" not in metadata:
-                metadata["festival"] = "–"
+            metadata["festival"] = metadata.get("festival", "–")
 
             assets = []
             for score in os.listdir(f"{repo_dir}/works/{work_dir}/scores"):
