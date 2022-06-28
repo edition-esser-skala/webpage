@@ -12,3 +12,6 @@ _site
 __pycache__
 vendor
 pat.py
+read_metadata.py
+instrument_data.csv
+settings.json

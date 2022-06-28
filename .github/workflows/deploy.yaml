@@ -37,7 +37,7 @@ jobs:
           GH_API_TOKEN: ${{ steps.get_app_token.outputs.token }}
         run: |
           mkdir -p _data _pages/projects _pages/scores
-          python prepare_score_pages.py
+          python _plugins/page_generator.py
 
       - name: Build webpage
         uses: jerryjvl/jekyll-build-action@v1
