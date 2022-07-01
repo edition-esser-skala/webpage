@@ -217,7 +217,7 @@ def generate_score_pages(works: dict) -> None:
             slug = f"{composer.first}-{composer.last}-{composer.suffix}"
 
         slug = slugify(slug)
-        permalink = f"/scores/{slug}"
+        permalink = f"/scores/{slug}/"
 
         # works
         table_rows, work_details = get_work_list(
