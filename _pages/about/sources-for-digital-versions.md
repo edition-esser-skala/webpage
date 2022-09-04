@@ -9,6 +9,7 @@ Most of our editions base upon digital manuscripts and prints provided by the fo
 
 - Dommusikarchiv Eisenstadt ([A-Ed](http://dommusikarchiv.martinus.at/)), public domain
 - Austrian National Library ([A-Wn](https://onb.digital)), public domain
+- National Library of the Czech Republic ([Cz-Pu](https://www.manuscriptorium.com)), available via Manuscriptorium, CC-BY-NC-SA 4.0
 - Staatsbibliothek zu Berlin ([D-B](https://digital.staatsbibliothek-berlin.de/)), CC-BY-NC-SA 4.0
 - Fürst zu Hohenlohe-Bartensteinsches Archiv ([D-BAR](https://www.landesarchiv-bw.de/)), public domain
 - Universitäts- und Landesbibliothek Bonn  ([D-BNu](https://digitale-sammlungen.ulb.uni-bonn.de/)), public domain
