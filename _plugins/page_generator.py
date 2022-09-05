@@ -264,7 +264,7 @@ def main() -> None:
 
     print(gh.get_rate_limit().core)
     get_markdown_file(gh_org,
-                      "editorial_guidelines.md",
+                      "documents/editorial_guidelines.md",
                       "editorial-guidelines.md",
                       "Editorial guidelines")
     get_markdown_file(gh_org,
