@@ -5,13 +5,15 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: "0 0 * * 1"
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Get app token
         id: get_app_token
@@ -21,7 +23,7 @@ jobs:
           application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
@@ -41,7 +43,7 @@ jobs:
         uses: jerryjvl/jekyll-build-action@v1
 
       - name: Deploy via rsync
-        uses: burnett01/rsync-deployments@5.1
+        uses: burnett01/rsync-deployments@5.2
         with:
           switches: -avzr --delete --exclude=/assets/pdf/
           path: _site/
