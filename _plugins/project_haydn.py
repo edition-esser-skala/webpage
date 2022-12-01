@@ -18,6 +18,8 @@ The *Proprium Missæ* is an emerging collection of all known short liturgical
 works by Johann Michael Haydn, in particular those that are freely available
 in contemporary manuscripts.
 
+MIDI files of all works are available [in this archive](https://edition.esser-skala.at/assets/pdf/haydn-m-proprium-missae/midi_collection.zip).
+
 *Current release: {last_tag} containing {n_works} works*
 """
 
