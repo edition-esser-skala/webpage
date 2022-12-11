@@ -1,5 +1,6 @@
 """Pages for the Proprium Missae project."""
 
+from operator import itemgetter
 import os
 import tempfile
 
@@ -86,6 +87,7 @@ def add_project_haydn(gh_org: Organization) -> None:
             metadata["asset_links"] = " ".join(assets)
 
             works.append(metadata)
+        works.sort(key=itemgetter("title"))
 
     table_rows = "\n".join([TABLEROW_TEMPLATE.format(**w) for w in works])
     work_details = "\n".join([WORK_TEMPLATE.format(**w) for w in works])
