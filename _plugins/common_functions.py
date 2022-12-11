@@ -130,13 +130,9 @@ def format_metadata(metadata: dict, gh_org_name: str) -> dict:
         metadata["subtitle"] = f"{metadata['subtitle']}<br/>{metadata['id']}"
     metadata["subtitle"] = metadata["subtitle"].replace(r"\\", " ")
 
-    # translate scoring from LaTeX to human-readable
-    scoring = re.sub(r"\\newline", " ", metadata["scoring"])
-    scoring = re.sub(r"\\\\", " ", scoring)
-    scoring = re.sub(r"\\flat\s(.)", r"\1♭", scoring)
-    scoring = re.sub(r"\\sharp\s(.)", r"\1♯", scoring)
-    scoring = re.sub(r"\\\s", r" ", scoring)
-    metadata["scoring"] = scoring
+    # convert LaTeX commands to plain text
+    metadata["title"] = latex_to_text(metadata["title"])
+    metadata["scoring"] = latex_to_text(metadata["scoring"])
 
     # misc fields
     metadata["license"] = LICENSES[metadata["license"]]
@@ -176,6 +172,23 @@ def format_metadata(metadata: dict, gh_org_name: str) -> dict:
         metadata["asset_links"] = " ".join(assets)
 
     return metadata
+
+
+def latex_to_text(s: str) -> str:
+    """Converts LaTeX commands to plain text.
+
+    Args:
+        s (str): string to format
+
+    Returns:
+        str: reformatted string.
+    """
+    res = re.sub(r"\\newline", " ", s)
+    res = re.sub(r"\\\\", " ", res)
+    res = re.sub(r"\\flat\s(.)", r"\1♭", res)
+    res = re.sub(r"\\sharp\s(.)", r"\1♯", res)
+    res = re.sub(r"\\\s", r" ", res)
+    return res
 
 
 def make_part_name(filename: str, extension: str) -> str:
