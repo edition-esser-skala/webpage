@@ -201,6 +201,9 @@ def make_part_name(filename: str, extension: str) -> str:
     Returns:
         str: Reformatted part name.
     """
+    if filename == "midi_collection.zip":
+      return '<i class="fas fa-music"></i>'
+
     name = filename.removesuffix(extension)
     for old, new in PART_REPLACE.items():
         name = re.sub(old, new, name)
