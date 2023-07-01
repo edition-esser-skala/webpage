@@ -13,8 +13,6 @@ PART_REPLACE = {
     "bc_realized": "bc (realizzato)",
     "cord": "cor (D)",
     "corf": "cor (F)",
-    "coro_DE": "coro (DE)",
-    "coro_DK": "coro (DK)",
     "cemb_realized": "cemb (realizzato)",
     "full_score": "full score",
     "oba": "ob d'amore",
@@ -207,6 +205,9 @@ def make_part_name(filename: str, extension: str) -> str:
     name = filename.removesuffix(extension)
     for old, new in PART_REPLACE.items():
         name = re.sub(old, new, name)
+
+    if name.startswith("coro_"):
+        name = re.sub("_(.+)$", " (\\1)", name)
     return name
 
 
