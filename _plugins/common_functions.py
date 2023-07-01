@@ -203,11 +203,12 @@ def make_part_name(filename: str, extension: str) -> str:
       return '<i class="fas fa-music"></i>'
 
     name = filename.removesuffix(extension)
+    if name.startswith("coro_"):
+        name = re.sub("_(.+)$", " (\\1)", name)
+
     for old, new in PART_REPLACE.items():
         name = re.sub(old, new, name)
 
-    if name.startswith("coro_"):
-        name = re.sub("_(.+)$", " (\\1)", name)
     return name
 
 
