@@ -11,7 +11,7 @@ from github.Organization import Organization
 from pygments import highlight
 from pygments.lexers.lilypond import LilyPondLexer
 from pygments.formatters.html import HtmlFormatter
-import yaml
+import strictyaml
 
 from common_functions import (Composer, format_metadata, get_work_list,
                               parse_composer_details, slugify, PAGE_TEMPLATE)
@@ -159,12 +159,12 @@ def collect_metadata(gh_org: Organization,
             continue
 
         print(f"{counter_str} Analyzing {repo.name}")
-        metadata = yaml.load(
+        metadata = strictyaml.load(
             repo  # type: ignore
             .get_contents("metadata.yaml", ref=releases[0].tag_name)
-            .decoded_content,
-            Loader=yaml.SafeLoader
-        )
+            .decoded_content
+            .decode("utf-8")
+        ).data
 
         metadata["repo"] = repo.name
         tags = {t.name: t for t in repo.get_tags()}
@@ -257,7 +257,8 @@ def generate_score_pages(works: dict) -> None:
                 for initial, children in navigation.items()]
 
     with open("_data/navigation.yml", "w", encoding="utf-8") as f:
-        f.write(NAVIGATION_TEMPLATE.format(yaml.dump(nav_dict)))
+        f.write(NAVIGATION_TEMPLATE.format(strictyaml.as_document(nav_dict)
+                                                     .as_yaml()))
 
 
 def main() -> None:

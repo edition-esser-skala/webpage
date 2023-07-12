@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install GitPython pandas PyGithub Pygments PyYAML python-dateutil
+          pip install GitPython pandas PyGithub Pygments python-dateutil strictyaml
 
       - name: Generate pages
         env:

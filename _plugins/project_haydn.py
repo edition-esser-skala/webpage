@@ -6,7 +6,7 @@ import tempfile
 
 import git
 from github.Organization import Organization
-import yaml
+import strictyaml
 
 from common_functions import (format_metadata, make_part_name,
                               PAGE_TEMPLATE, TABLEROW_TEMPLATE)
@@ -68,7 +68,7 @@ def add_project_haydn(gh_org: Organization) -> None:
             print(f"({counter}/{len(work_dirs)}) Analyzing {work_dir}")
             with open(f"{repo_dir}/works/{work_dir}/metadata.yaml",
                       encoding="utf-8") as f:
-                metadata = yaml.load(f, Loader=yaml.SafeLoader)
+                metadata = strictyaml.load(f.read()).data
 
             metadata = format_metadata(metadata, gh_org.login)
 
