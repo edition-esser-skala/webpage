@@ -2,7 +2,7 @@
 .jekyll-cache
 .jekyll-metadata
 .sass-cache
-_data
+_data/navigation.yml
 _github_api_cache
 _pages/about/editorial-guidelines.md
 _pages/about/technical-documentation.md

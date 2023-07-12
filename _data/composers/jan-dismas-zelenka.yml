@@ -1,0 +1,18 @@
+name:
+  last: Zelenka
+  first: Jan Dismas
+born:
+  date: 1679-10-16
+  location: Louňovice pod Blaníkem, Czech Republic
+died:
+  date: 1745-12-23
+  location: Dresden, Germany
+encyclopedia:
+  mgg: 13433
+  grove: 10.1093/gmo/9781561592630.article.30907
+  wikipedia_de: Jan_Dismas_Zelenka
+  wikipedia_en: Jan_Dismas_Zelenka
+authority:
+  gnd: 118808370
+  viaf: 32793075
+cv: TBD
