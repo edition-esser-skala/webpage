@@ -2,6 +2,7 @@
 
 from collections import namedtuple
 import re
+import strictyaml
 
 LICENSES = {
     "cc-by-sa-4.0": "![CC BY-SA 4.0](/assets/images/license_cc-by-sa.svg){:width='120px'}",
@@ -95,6 +96,35 @@ sidebar:
 
 {work_details}
 """
+
+INTRO_TEMPLATE = """\
+|<span class="label-col">born</span>|{born}|
+|<span class="label-col">died</span>|{died}|
+|<span class="label-col">links</span>|{links}|
+|<span class="label-col">authorities</span>|{authorities}|
+{{: class="work-table"}}
+
+{cv}
+
+{literature}
+"""
+
+# pylint: disable=line-too-long
+ENCYCLOPEDIAS = {
+    "mgg": "[MGG](https://www.mgg-online.com/mgg/stable/{}){{: .asset-link}}",
+    "grove": "[Grove](https://doi.org/{}){{: .asset-link}}",
+    "wikipedia_de": '[<i class="fab fa-wikipedia-w"></i> (de)](https://de.wikipedia.org/wiki/{}){{: .asset-link}}',
+    "wikipedia_en": '[<i class="fab fa-wikipedia-w"></i> (en)](https://en.wikipedia.org/wiki/{}){{: .asset-link}}'
+}
+
+AUTHORITIES = {
+    "gnd": "[GND](https://d-nb.info/gnd/{}){{: .asset-link}}",
+    "viaf": "[VIAF](https://viaf.org/viaf/{}){{: .asset-link}}"
+}
+
+REFERENCE_TEMPLATE = {
+    "book": "- {author} ({year}). {title}. {publisher}, {location}. {url}"
+}
 
 Composer = namedtuple("Composer", "first last suffix")
 
@@ -200,7 +230,7 @@ def make_part_name(filename: str, extension: str) -> str:
         str: Reformatted part name.
     """
     if filename == "midi_collection.zip":
-      return '<i class="fas fa-music"></i>'
+        return '<i class="fas fa-music"></i>'
 
     name = filename.removesuffix(extension)
     if name.startswith("coro_"):
@@ -239,3 +269,93 @@ def get_work_list(works: list) -> tuple[str, str]:
     table_rows = "\n".join([TABLEROW_TEMPLATE.format(**w) for w in works])
     work_details = "\n".join([WORK_TEMPLATE.format(**w) for w in works])
     return table_rows, work_details
+
+
+def format_reference(ref: list) -> str:
+    """Format a reference.
+
+    Args:
+        ref (list): reference details (author, title, ...)
+
+    Returns:
+        str: formatted reference
+    """
+
+    # format the author(s): "A" or "A, B" or "A, B, and C"
+    authors = ref["author"][0]
+    if len(ref["author"]) == 2:
+        authors = f'{ref["author"][0]} and {ref["author"][1]}'
+    if len(ref["author"]) > 2:
+        authors = ref["author"][:-1]
+        authors = ", ".join(authors) + ", and" + ref["author"][-1]
+    ref["author"] = authors
+
+    if "url" not in ref:
+        ref["url"] = ""
+
+    return REFERENCE_TEMPLATE[ref["type"]].format(**ref)
+
+
+def parse_composer_details(file: str) -> str:
+    """Parse composer details (dates, links, cv ...) from a YAML file.
+
+    Args:
+        file (str): YAML file with composer details
+
+    Returns:
+        str: Markdown string to be included in the webpage
+    """
+
+    with open(file, encoding="utf8") as f:
+        data = strictyaml.load(f.read()).data
+
+    # born date and possibly location
+    born = "(unknown)"
+    if "born" in data:
+        born = data["born"]["date"]
+        if "location" in data["born"]:
+            born = f'{data["born"]["date"]} ({data["born"]["location"]})'
+
+    # died date and possibly location
+    died = "(unknown)"
+    if "died" in data:
+        died = data["died"]["date"]
+        if "location" in data["died"]:
+            died = f'{data["died"]["date"]} ({data["died"]["location"]})'
+
+    # encyclopedia links (if available)
+    links = "-"
+    if "encyclopedia" in data:
+        links = " ".join([ENCYCLOPEDIAS[k].format(v)
+                          for k, v in data["encyclopedia"].items()])
+
+    # authority files (if available)
+    authorities = "-"
+    if "authority" in data:
+        authorities = " ".join([AUTHORITIES[k].format(v)
+                                for k, v in data["authority"].items()])
+
+    # cv (if available)
+    cv = data.get("cv", "")
+
+    # literature (if available)
+    literature = ""
+    if "literature" in data:
+        literature = "\n".join(
+            ["#### Literature"] +
+            [format_reference(r) for r in data["literature"]]
+        )
+
+    return INTRO_TEMPLATE.format(
+        born=born,
+        died=died,
+        links=links,
+        authorities=authorities,
+        cv=cv,
+        literature=literature
+    )
+
+
+if __name__ == "__main__":
+    x = parse_composer_details("_data/composers/johann-michael-haydn.yml")
+    print(x)

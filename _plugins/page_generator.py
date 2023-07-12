@@ -14,7 +14,7 @@ from pygments.formatters.html import HtmlFormatter
 import yaml
 
 from common_functions import (Composer, format_metadata, get_work_list,
-                              slugify, PAGE_TEMPLATE)
+                              parse_composer_details, slugify, PAGE_TEMPLATE)
 from project_haydn import add_project_haydn
 from project_caldara import add_project_caldara
 
@@ -219,6 +219,13 @@ def generate_score_pages(works: dict) -> None:
         slug = slugify(slug)
         permalink = f"/scores/{slug}/"
 
+        # composer details
+        intro = ""
+        details_file = f"_data/composers/{slug}.yml"
+        if os.path.exists(details_file):
+            print("Adding composer details for", slug)
+            intro = parse_composer_details(details_file)
+
         # works
         table_rows, work_details = get_work_list(
             sorted(works[composer], key=itemgetter("title")),
@@ -230,7 +237,7 @@ def generate_score_pages(works: dict) -> None:
                 PAGE_TEMPLATE.format(
                     title=title,
                     permalink=permalink,
-                    intro="",
+                    intro=intro,
                     table_rows=table_rows,
                     work_details=work_details
                 )
