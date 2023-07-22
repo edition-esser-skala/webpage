@@ -17,6 +17,7 @@ from common_functions import (Composer, format_metadata, get_work_list,
                               parse_composer_details, slugify, PAGE_TEMPLATE)
 from project_haydn import add_project_haydn
 from project_caldara import add_project_caldara
+from project_cantorey import add_project_cantorey
 
 try:
     from pat import TOKEN
@@ -56,6 +57,8 @@ scores:
       url: /projects/proprium-missae
     - title: Caldara@Dresden
       url: /projects/caldara-at-dresden
+    - title: Cantorey Performance Materials
+      url: /projects/cantorey-performance-materials
 {}
 """
 
@@ -284,6 +287,7 @@ def main() -> None:
     generate_score_pages(all_works)
     add_project_haydn(gh_org)
     add_project_caldara(all_works)
+    add_project_cantorey(gh_org)
     print(gh.get_rate_limit().core)
 
 
