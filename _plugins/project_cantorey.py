@@ -40,7 +40,8 @@ WORK_TEMPLATE = """\
 """
 
 PDF_LINK_TEMPLATE = ("[{part_name}](https://edition.esser-skala.at/assets/"
-                     "pdf/cantorey-performance-materials/{work}/{file})"
+                     "pdf/cantorey-performance-materials/"
+                     "{composer}/{work}/{file})"
                      "{{: .asset-link}}")
 
 
@@ -88,6 +89,7 @@ def add_project_cantorey(gh_org: Organization) -> None:
                     assets.append(
                         PDF_LINK_TEMPLATE.format(
                             part_name=make_part_name(score, ".ly"),
+                            composer=composer_dir,
                             work=work_dir,
                             file=score.replace(".ly", ".pdf")
                         )
