@@ -17,6 +17,9 @@ encyclopedia:
 authority:
   gnd: 115657754
   viaf: 74037803
+archive:
+  imslp: Haydn,_Michael
+  cpdl: Johann_Michael_Haydn
 literature:
   - type: book
     author:

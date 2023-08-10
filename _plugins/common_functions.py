@@ -102,6 +102,7 @@ INTRO_TEMPLATE = """\
 |<span class="label-col">died</span>|{died}|
 |<span class="label-col">links</span>|{links}|
 |<span class="label-col">authorities</span>|{authorities}|
+|<span class="label-col">archives</span>|{archives}|
 {{: class="work-table"}}
 
 {cv}
@@ -123,6 +124,11 @@ ENCYCLOPEDIAS = {
 AUTHORITIES = {
     "gnd": "[GND](https://d-nb.info/gnd/{}){{: .asset-link}}",
     "viaf": "[VIAF](https://viaf.org/viaf/{}){{: .asset-link}}"
+}
+
+ARCHIVES = {
+    "imslp": "[IMSLP](https://imslp.org/wiki/Category:{}){{: .asset-link}}",
+    "cpdl": "[CPDL](https://www.cpdl.org/wiki/index.php/{}){{: .asset-link}}"
 }
 
 REFERENCE_TEMPLATE = {
@@ -338,6 +344,12 @@ def parse_composer_details(file: str) -> str:
         authorities = " ".join([AUTHORITIES[k].format(v)
                                 for k, v in data["authority"].items()])
 
+    # sheet music archives (if available)
+    archives = "-"
+    if "archive" in data:
+        archives = " ".join([ARCHIVES[k].format(v)
+                             for k, v in data["archive"].items()])
+
     # cv (if available)
     cv = data.get("cv", "")
 
@@ -354,6 +366,7 @@ def parse_composer_details(file: str) -> str:
         died=died,
         links=links,
         authorities=authorities,
+        archives=archives,
         cv=cv,
         literature=literature
     )
