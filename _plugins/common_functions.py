@@ -114,7 +114,10 @@ ENCYCLOPEDIAS = {
     "mgg": "[MGG](https://www.mgg-online.com/mgg/stable/{}){{: .asset-link}}",
     "grove": "[Grove](https://doi.org/{}){{: .asset-link}}",
     "wikipedia_de": '[<i class="fab fa-wikipedia-w"></i> (de)](https://de.wikipedia.org/wiki/{}){{: .asset-link}}',
-    "wikipedia_en": '[<i class="fab fa-wikipedia-w"></i> (en)](https://en.wikipedia.org/wiki/{}){{: .asset-link}}'
+    "wikipedia_en": '[<i class="fab fa-wikipedia-w"></i> (en)](https://en.wikipedia.org/wiki/{}){{: .asset-link}}',
+    "oeml": "[ÖML](https://doi.org/{}){{: .asset-link}}",
+    "oebl": "[ÖBL](https://doi.org/{}){{: .asset-link}}",
+    "db": "[DB](https://www.deutsche-biographie.de/{}.html){{: .asset-link}}",
 }
 
 AUTHORITIES = {
