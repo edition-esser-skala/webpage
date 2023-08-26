@@ -1,0 +1,35 @@
+name:
+  last:
+  first:
+  suffix:
+born:
+  date:
+  location:
+died:
+  date:
+  location:
+encyclopedia:
+  mgg:
+  grove:
+  wikipedia_de:
+  wikipedia_en:
+  oeml:
+  oebl:
+  db:
+authority:
+  gnd:
+  viaf:
+archive:
+  imslp:
+  cpdl:
+literature:
+  - type: book
+    author:
+    - author 1
+    - author 2
+    title:
+    publisher:
+    location:
+    year:
+    url:
+cv:
