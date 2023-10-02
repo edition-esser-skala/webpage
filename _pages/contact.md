@@ -6,6 +6,7 @@ header:
 ---
 
 Edition Esser-Skala<br/>
+(Selbstverlag § 2 Abs 1 Z 7 GewO 1994)<br/>
 c/o Dr. Wolfgang Esser-Skala<br/>
 Wolfgangseestraße 31g<br/>
 5023 Koppl<br/>
