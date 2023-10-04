@@ -294,12 +294,14 @@ def format_reference(ref: list) -> str:
     """
 
     # format the author(s): "A" or "A, B" or "A, B, and C"
-    authors = ref["author"][0]
-    if len(ref["author"]) == 2:
-        authors = f'{ref["author"][0]} and {ref["author"][1]}'
-    if len(ref["author"]) > 2:
-        authors = ref["author"][:-1]
-        authors = ", ".join(authors) + ", and" + ref["author"][-1]
+    if isinstance(ref["author"], str):
+        authors = ref["author"]
+    else:  # list of authors
+        if len(ref["author"]) == 2:
+            authors = f'{ref["author"][0]} and {ref["author"][1]}'
+        if len(ref["author"]) > 2:
+            authors = ref["author"][:-1]
+            authors = ", ".join(authors) + ", and" + ref["author"][-1]
     ref["author"] = authors
 
     if "url" not in ref:
