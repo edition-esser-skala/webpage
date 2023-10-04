@@ -1,0 +1,31 @@
+name:
+  last: Reutter
+  first: Georg
+  suffix: der Jüngere
+born:
+  date: 1708-04-06
+  location: Vienna, Austris
+died:
+  date: 1772-03-11
+  location: Vienna, Austris
+encyclopedia:
+  mgg: 370066
+  grove: 10.1093/gmo/9781561592630.article.23278
+  wikipedia_de: Georg_Reutter_der_Jüngere
+  wikipedia_en: Johann_Georg_Reutter
+  oeml: 10.1553/0x0001df15
+  db: pnd102338469
+authority:
+  gnd: 102338469
+  viaf: 56879438
+archive:
+  imslp: Reutter,_Georg
+  cpdl: Georg_Reutter
+literature:
+  - type: book
+    author: Norbert Hofer
+    title: Thematisches Verzeichnis der Werke von Georg Reutter jun.
+    publisher: Typescript, A-Wn
+    location: Wien
+    year: 1947
+cv: Georg Reutter the Younger received musical lessons from his father and Antonio Caldara, who introduced him to the current opera style. After a trip to Italy around 1730, he was appointed court composer in 1731. In 1736 he took over the duties of first cathedral music director at St. Stephan, and in 1738 the office was officially transferred to him. In 1767 Reutter received the title of first court conductor. He was one of the most influential and prolific Viennese church, opera and oratorio composers of his time; his church works were performed until the 19th century. His operatic and instrumental style reveals in many ways the clear influence of Caldara in connection with the current stylistic trends originating from Naples.
