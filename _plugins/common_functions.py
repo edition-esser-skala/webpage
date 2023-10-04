@@ -133,9 +133,9 @@ ARCHIVES = {
 }
 
 REFERENCE_TEMPLATE = {
-    "article": "- {author} ({year}). {title}. {journal} {volume}:{pages}. {url}",
-    "book": "- {author} ({year}). {title}. {publisher}, {location}. {url}",
-    "website": "- {author} ({year}). {title}. {url}"
+    "article": "- {author} ({year}). {title}. {journal} {volume}:{pages}.",
+    "book": "- {author} ({year}). {title}. {publisher}, {location}.",
+    "website": "- {author} ({year}). {title}."
 }
 
 Composer = namedtuple("Composer", "first last suffix")
@@ -304,8 +304,8 @@ def format_reference(ref: list) -> str:
             authors = ", ".join(authors) + ", and" + ref["author"][-1]
     ref["author"] = authors
 
-    if "url" not in ref:
-        ref["url"] = ""
+    if "url" in ref:
+        ref["title"] = f'[{ref["title"]}]({ref["url"]})'
 
     return REFERENCE_TEMPLATE[ref["type"]].format(**ref)
 
@@ -378,5 +378,7 @@ def parse_composer_details(file: str) -> str:
 
 
 if __name__ == "__main__":
-    x = parse_composer_details("_data/composers/johann-michael-haydn.yml")
-    print(x)
+    for yfile in ["johann-michael-haydn",
+                  "johann-georg-zechner",
+                  "gregor-joseph-werner"]:
+        print(parse_composer_details(f"_data/composers/{yfile}.yml"))
