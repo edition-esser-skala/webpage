@@ -133,7 +133,9 @@ ARCHIVES = {
 }
 
 REFERENCE_TEMPLATE = {
-    "book": "- {author} ({year}). {title}. {publisher}, {location}. {url}"
+    "article": "- {author} ({year}). {title}. {journal} {volume}:{pages}. {url}",
+    "book": "- {author} ({year}). {title}. {publisher}, {location}. {url}",
+    "website": "- {author} ({year}). {title}. {url}"
 }
 
 Composer = namedtuple("Composer", "first last suffix")
