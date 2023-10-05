@@ -7,7 +7,7 @@ sidebar:
   nav: about
 ---
 
-The Edition Esser-Skala provides practitioners with reliable, [Open Content](https://opendefinition.org/od) modern editions of (mainly) 18th century sacral music. All scores may be freely downloaded in PDF format. Moreover, selected titles are available in printed form from Kindle Direct Publishing (at cost price). Our highlights include
+The Edition Esser-Skala provides practitioners with reliable, [Open Content](https://opendefinition.org/od) modern editions of (mainly) 18th century sacral music. All scores may be freely downloaded in PDF format. Moreover, selected titles are available in print from Kindle Direct Publishing (at cost price). Our highlights include
 
 - various unpublished works by Johann [Michael Haydn](/scores/johann-michael-haydn), many of which are collected in the [Proprium Missæ](/projects/proprium-missae/) project
 - passions and oratorios by Johann Heinrich [Rolle](/scores/johann-heinrich-rolle) as well as Gottfried Heinrich [Stölzel](/scores/gottfried-heinrich-stoelzel)
