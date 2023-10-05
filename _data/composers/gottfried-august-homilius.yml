@@ -1,0 +1,29 @@
+name:
+  last: Homilius
+  first: Gottfried August
+born:
+  date: 1714-02-02
+  location: Rosenthal, Germany
+died:
+  date: 1785-06-02
+  location: Dresden, Germany
+encyclopedia:
+  mgg: 26853
+  grove: 10.1093/gmo/9781561592630.article.13287
+  wikipedia_de: Gottfried_August_Homilius
+  wikipedia_en: Gottfried_August_Homilius
+  db: pnd118553356
+authority:
+  gnd: 118553356
+  viaf: 64191992
+archive:
+  imslp: Homilius,_Gottfried_August
+  cpdl: Gottfried_August_Homilius
+literature:
+  - type: book
+    author: Uwe Wolf
+    title: Gottfried August Homilius. Thematisches Verzeichnis der musikalischen Werke (HoWV)
+    publisher: Carus
+    location: Stuttgart
+    year: 2014
+cv: After attending the Annenschule in Dresden, Homilius studied law in Leipzig. He was already musically active there and temporarily represented the organist at the Nikolaikirche. He was probably one of Johann Sebastian Bach's immediate circle of students. From 1742 Homilius was organist at the Frauenkirche in Dresden and from 1755 until his death he was organist and music director at the three main churches in Dresden.
