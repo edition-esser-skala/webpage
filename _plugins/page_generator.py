@@ -18,6 +18,7 @@ from common_functions import (Composer, format_metadata, get_work_list,
 from project_haydn import add_project_haydn
 from project_caldara import add_project_caldara
 from project_cantorey import add_project_cantorey
+from project_werner import add_project_werner
 
 try:
     from pat import TOKEN
@@ -54,11 +55,13 @@ scores:
 - title: ❦ Projects
   children:
     - title: Michael Haydn's Proprium Missæ
-      url: /projects/proprium-missae
+      url: /projects/haydn-m-proprium-missae
     - title: Caldara@Dresden
       url: /projects/caldara-at-dresden
     - title: Cantorey Performance Materials
       url: /projects/cantorey-performance-materials
+    - title: Werner's Proprium Missæ
+      url: /projects/werner-proprium-missae
 {}
 """
 
@@ -288,6 +291,7 @@ def main() -> None:
     add_project_haydn(gh_org)
     add_project_caldara(all_works)
     add_project_cantorey(gh_org)
+    add_project_werner(gh_org)
     print(gh.get_rate_limit().core)
 
 
