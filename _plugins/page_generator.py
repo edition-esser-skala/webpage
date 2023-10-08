@@ -15,9 +15,10 @@ import strictyaml
 
 from common_functions import (Composer, format_metadata, get_work_list,
                               parse_composer_details, slugify, PAGE_TEMPLATE)
-from project_haydn import add_project_haydn
+from project_eybler import add_project_eybler
 from project_caldara import add_project_caldara
 from project_cantorey import add_project_cantorey
+from project_haydn import add_project_haydn
 from project_werner import add_project_werner
 
 try:
@@ -54,12 +55,14 @@ about:
 scores:
 - title: ❦ Projects
   children:
-    - title: Michael Haydn's Proprium Missæ
-      url: /projects/haydn-m-proprium-missae
     - title: Caldara@Dresden
       url: /projects/caldara-at-dresden
     - title: Cantorey Performance Materials
       url: /projects/cantorey-performance-materials
+    - title: Eybler's Proprium Missæ
+      url: /projects/eybler-proprium-missae
+    - title: Michael Haydn's Proprium Missæ
+      url: /projects/haydn-m-proprium-missae
     - title: Werner's Proprium Missæ
       url: /projects/werner-proprium-missae
 {}
@@ -270,8 +273,9 @@ def generate_score_pages(works: dict) -> None:
 def main() -> None:
     """Main workflow.
     """
-    ignored_repos = ["ees-template", "ees-tools", "haydn-m-proprium-missae",
-                     "sacral-lyrics", "webpage", "misc-analyses"]
+    ignored_repos = ["ees-template", "ees-tools", "eybler-proprium-missae",
+                     "haydn-m-proprium-missae", "misc-analyses",
+                     "sacral-lyrics", "webpage", "werner-proprium-missae"]
 
     gh = Github(TOKEN)
     gh_org = gh.get_organization("edition-esser-skala")
@@ -288,9 +292,10 @@ def main() -> None:
     highlight_lilypond_snippets("_pages/about/technical-documentation.md")
     all_works = collect_metadata(gh_org, ignored_repos)
     generate_score_pages(all_works)
-    add_project_haydn(gh_org)
     add_project_caldara(all_works)
     add_project_cantorey(gh_org)
+    add_project_eybler(gh_org)
+    add_project_haydn(gh_org)
     add_project_werner(gh_org)
     print(gh.get_rate_limit().core)
 
