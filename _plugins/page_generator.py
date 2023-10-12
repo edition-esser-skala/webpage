@@ -148,6 +148,10 @@ def collect_metadata(gh_org: Organization,
     if ignored_repos is None:
         ignored_repos = []
 
+    with open("_data/prints.yml", encoding="utf8") as f:
+        available_prints = {d["repo"]: d["asin"]
+                            for d in strictyaml.load(f.read()).data["prints"]}
+
     works: dict[Composer, list] = {}
 
     for counter, repo in enumerate(repos):
@@ -192,6 +196,8 @@ def collect_metadata(gh_org: Organization,
         ]
 
         metadata["assets"] = [i.name for i in releases[0].get_assets()]
+
+        metadata["asin"] = available_prints.get(repo.name)
 
         metadata = format_metadata(metadata, gh_org.login)
 
