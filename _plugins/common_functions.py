@@ -70,9 +70,10 @@ WORK_TEMPLATE = """\
 |<span class="label-col">genre</span>|{genre}|
 |<span class="label-col">scoring</span>|{scoring}|
 |<span class="label-col">latest release</span>|{latest_release}|
-|<span class="label-col">GitHub</span>|{asset_links}|
+|<span class="label-col">scores</span>|{asset_links}|
 |<span class="label-col">IMSLP</span>|[scores and parts](https://imslp.org/wiki/{imslp})|{entry_print}
 |<span class="label-col">previous releases</span>|{old_releases}|
+|<span class="label-col">source</span>|[GitHub](https://github.com/edition-esser-skala/{repo})|
 |<span class="label-col">license</span>|{license}|
 {{: class="work-table"}}
 """
