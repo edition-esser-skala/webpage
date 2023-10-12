@@ -60,6 +60,9 @@ ASSET_TEMPLATE = ("[{part_name}](https://github.com/{org}/"
                   "{repo}/releases/download/{version}/{file})"
                   "{{: .asset-link{cls}}}")
 
+ENTRY_PRINT_TEMPLATE = """
+|<span class="label-col">Print</span>|[full score](https://amazon.de/dp/{})|"""
+
 WORK_TEMPLATE = """\
 ### {title}<br/><span class="work-subtitle">{subtitle}</span>
 {{: #work-{id_slug}}}
@@ -68,7 +71,7 @@ WORK_TEMPLATE = """\
 |<span class="label-col">scoring</span>|{scoring}|
 |<span class="label-col">latest release</span>|{latest_release}|
 |<span class="label-col">GitHub</span>|{asset_links}|
-|<span class="label-col">IMSLP</span>|[scores and parts](https://imslp.org/wiki/{imslp})|
+|<span class="label-col">IMSLP</span>|[scores and parts](https://imslp.org/wiki/{imslp})|{entry_print}
 |<span class="label-col">previous releases</span>|{old_releases}|
 |<span class="label-col">license</span>|{license}|
 {{: class="work-table"}}
@@ -180,6 +183,10 @@ def format_metadata(metadata: dict, gh_org_name: str) -> dict:
     metadata["license"] = LICENSES[metadata["license"]]
     metadata["id_slug"] = slugify(metadata["id"])
     metadata["imslp"] = metadata.get("imslp", "")
+    if "asin" in metadata:
+        metadata["entry_print"] = ENTRY_PRINT_TEMPLATE.format(metadata["asin"])
+    else:
+        metadata["entry_print"] = ""
 
     # releases
     if "releases" in metadata:
