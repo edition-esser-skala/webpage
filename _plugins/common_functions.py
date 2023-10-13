@@ -184,10 +184,10 @@ def format_metadata(metadata: dict, gh_org_name: str) -> dict:
     metadata["license"] = LICENSES[metadata["license"]]
     metadata["id_slug"] = slugify(metadata["id"])
     metadata["imslp"] = metadata.get("imslp", "")
-    if metadata["asin"] is None:
-        metadata["entry_print"] = ""
-    else:
+    if "asin" in metadata:
         metadata["entry_print"] = ENTRY_PRINT_TEMPLATE.format(metadata["asin"])
+    else:
+        metadata["entry_print"] = ""
 
     # releases
     if "releases" in metadata:

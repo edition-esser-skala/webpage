@@ -197,7 +197,8 @@ def collect_metadata(gh_org: Organization,
 
         metadata["assets"] = [i.name for i in releases[0].get_assets()]
 
-        metadata["asin"] = available_prints.get(repo.name)
+        if repo.name in available_prints:
+            metadata["asin"] = available_prints[repo.name]
 
         metadata = format_metadata(metadata, gh_org.login)
 
