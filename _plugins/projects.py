@@ -14,6 +14,14 @@ from common_functions import (format_metadata, make_part_name,
 
 IGNORED_WORKS = ["template"]
 
+PAGE_INTRO = """\
+{page_intro}
+
+MIDI files of all works are available [in this archive](https://edition.esser-skala.at/assets/pdf/{repo}/midi_collection.zip).
+
+*Current release: {last_tag} containing {n_works} works*
+"""
+
 WORK_TEMPLATE = """\
 ### {title}<br/><span class="work-subtitle">{subtitle}</span>
 {{: #work-{id_slug}}}
@@ -25,6 +33,10 @@ WORK_TEMPLATE = """\
 |<span class="label-col">license</span>|{license}|
 {{: class="work-table"}}
 """
+
+PDF_LINK_TEMPLATE = ("[{part_name}](https://edition.esser-skala.at/assets/"
+                     "pdf/{repo}/{work}/{file})"
+                     "{{: .asset-link{cls}}}")
 
 
 def add_project(gh_org: Organization,
@@ -40,18 +52,6 @@ def add_project(gh_org: Organization,
         page_intro (str): introductory text at the top of the page
     """
     print(f"Preparing project '{title}'")
-
-    PDF_LINK_TEMPLATE = ("[{part_name}](https://edition.esser-skala.at/assets/"
-                         "pdf/{repo}/{work}/{file})"
-                         "{{: .asset-link{cls}}}")
-
-    PAGE_INTRO = """
-    {page_intro}
-
-    MIDI files of all works are available [in this archive](https://edition.esser-skala.at/assets/pdf/{repo}/midi_collection.zip).
-
-    *Current release: {last_tag} containing {n_works} works*
-    """
 
     last_tag = gh_org.get_repo(repo).get_tags()[0].name
 
