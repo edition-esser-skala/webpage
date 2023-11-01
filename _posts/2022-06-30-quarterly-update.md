@@ -30,7 +30,7 @@ We continue our *Caldara@Dresden* project with editions of the remaining masses 
 - [Litaniæ de Venerabili Sacramento](/scores/johann-michael-haydn/#work-mh-228) MH 228<br/>
   We managed to find a digital version of the autograph manuscript and thus updated our edition. A comparison to the 1823 print revealed that the latter edition contained several errors and mistakes and was highly inaccurate regarding bass figures, slurs, and dynamics.
 - [Vesperæ de Dominica](/scores/johann-michael-haydn/#work-mh-321) MH 321
-- The [Proprium Missæ](/projects/proprium-missae/) project now also includes MH 491 and 503.
+- The [Proprium Missæ](/projects/haydn-m-proprium-missae/) project now also includes MH 491 and 503.
 
 
 ### Hofmann, Leopold

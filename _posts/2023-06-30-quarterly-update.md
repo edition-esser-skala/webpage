@@ -34,7 +34,7 @@ excerpt: Aumann · Caldara · Ehrenhardt · Eybler · Gassmann · Haydn M · Hof
 ### Haydn, Johann Michael
 
 - The Litaniæ de Venerabili Sacramento [MH 66](/scores/johann-michael-haydn/#work-mh-66) and [MH 532](/scores/johann-michael-haydn/#work-mh-532) have been updated. Notable, the edition of the former litany now uses the autograph manuscript (D-B Mus. ms. autogr. Haydn, J. M. 8) as principal source.
-- The [Proprium Missæ](/projects/proprium-missae/) project now also includes MH 22, 40, 47, 75, 97–99, 113, 123, 126, 128, 131, 201, 224, 263, 270, 275, 281, 283, 341–343, 350, 357, 359, 392, 395, 426, 436, 437, 526, 528, 554, 572, 573, 595, 792, 793 798, 810, 827, 828, 830, as well as the spurious works D1 (F-Pn D-5983 (5)), D2 (A-Ed E 68), and D3 (A-Ed F 25). Moreover, MH 183 uses the autograph manuscript (PL-Kj Mus. ms. autogr. Haydn, J. Mich. 6) as principal source, and MH 363 (cross reference to MH 810) and 365 (parts for three trombones) have been updated.
+- The [Proprium Missæ](/projects/haydn-m-proprium-missae/) project now also includes MH 22, 40, 47, 75, 97–99, 113, 123, 126, 128, 131, 201, 224, 263, 270, 275, 281, 283, 341–343, 350, 357, 359, 392, 395, 426, 436, 437, 526, 528, 554, 572, 573, 595, 792, 793 798, 810, 827, 828, 830, as well as the spurious works D1 (F-Pn D-5983 (5)), D2 (A-Ed E 68), and D3 (A-Ed F 25). Moreover, MH 183 uses the autograph manuscript (PL-Kj Mus. ms. autogr. Haydn, J. Mich. 6) as principal source, and MH 363 (cross reference to MH 810) and 365 (parts for three trombones) have been updated.
 
 
 ### Hofmann, Leopold
@@ -59,4 +59,4 @@ excerpt: Aumann · Caldara · Ehrenhardt · Eybler · Gassmann · Haydn M · Hof
 ## Performances
 
 - The Cantores Carmeli Linz and Collegium Instrumentale Carmeli, conducted by [Michael Stenov](https://de.wikipedia.org/wiki/Michael_Stenov), have [performed](https://www.youtube.com/watch?v=HmHNfxBnzoc) Eybler’s [Missa in C](/scores/joseph-leopold-edler-von-eybler/#work-herey-7) HerEy 7 on Whitsunday (2023-06-28).
-- The Cantorey der Kirche der Barmherzigen Brüder Schärding has performed Michael Haydn’s [Alleluia ascendit Deus](/projects/proprium-missae/#work-mh-365) MH 365 on Ascension Day (2023-05-18) and the [Missa in honorem Sanctissimæ Trinitatis](/scores/johann-michael-haydn/#work-mh-1) MH 1 on the Feast of Corpus Christi (2023-06-08).
+- The Cantorey der Kirche der Barmherzigen Brüder Schärding has performed Michael Haydn’s [Alleluia ascendit Deus](/projects/haydn-m-proprium-missae/#work-mh-365) MH 365 on Ascension Day (2023-05-18) and the [Missa in honorem Sanctissimæ Trinitatis](/scores/johann-michael-haydn/#work-mh-1) MH 1 on the Feast of Corpus Christi (2023-06-08).

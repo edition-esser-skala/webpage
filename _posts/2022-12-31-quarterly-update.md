@@ -25,7 +25,7 @@ excerpt: Adlgasser · Brixi · Caldara · Haydn M · Hofmann · Tůma · Werner 
 
 ### Haydn, Johann Michael
 
-- The [Proprium Missæ](/projects/proprium-missae/) project now also includes MH 213, 361, 366, 388–390, 394, 401–403, 408, 409, 415, 494, 505f, 509–511, 513, 519–524, 588, 635, and 800. Moreover, [MIDI files](/assets/pdf/haydn-m-proprium-missae/midi_collection.zip) for all works are available.
+- The [Proprium Missæ](/projects/haydn-m-proprium-missae/) project now also includes MH 213, 361, 366, 388–390, 394, 401–403, 408, 409, 415, 494, 505f, 509–511, 513, 519–524, 588, 635, and 800. Moreover, [MIDI files](/assets/pdf/haydn-m-proprium-missae/midi_collection.zip) for all works are available.
 
 
 ### Hofmann, Leopold

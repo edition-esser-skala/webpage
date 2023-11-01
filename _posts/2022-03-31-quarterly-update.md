@@ -34,7 +34,7 @@ We have also unearthed a hymn from the Dommusikarchiv Eisenstadt:
 
 - [Litaniæ de Venerabili Sacramento](/scores/johann-michael-haydn/#work-mh-228) MH 228<br/>
   A fascinating litany, featuring three violas in the *Cœleste antidotum*. The *Pignus futuræ gloriæ* is a complex allabreve fugue, of which Mozart seems to have been quite impressed (KV<sup>6</sup> Anh. A 12 represents a copy in his hand). This edition bases upon the 1823 print by Breitkopf und Härtel.
-- The [Proprium Missæ](/projects/proprium-missae/) project now also includes MH 143, 276, 362, 460, 482–487, 634, and 650.
+- The [Proprium Missæ](/projects/haydn-m-proprium-missae/) project now also includes MH 143, 276, 362, 460, 482–487, 634, and 650.
 
 ### Hofmann, Leopold
 

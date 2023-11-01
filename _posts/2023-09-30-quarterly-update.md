@@ -45,7 +45,7 @@ excerpt: Boog · Caldara · Eybler · Fuchs · Galuppi · Haydn M · Hofmann · 
   One of two sacred compositions in honor of St. Rupert of Salzburg, which have been preserved in the British Library ([GB-Lbm Add. 32.173](https://www.bl.uk/manuscripts/FullDisplay.aspx?ref=Add_MS_32173)).
 - [Attale et Erimene](/scores/johann-michael-haydn/#work-mh-11) MH 11<br/>
   The fragment of an early profane cantata.
-- The [Proprium Missæ](/projects/proprium-missae/) project now also includes MH 253, 269, 379, and 400. Moreover, MH 29 has been updated (realized org).
+- The [Proprium Missæ](/projects/haydn-m-proprium-missae/) project now also includes MH 253, 269, 379, and 400. Moreover, MH 29 has been updated (realized org).
 
 
 ### Hofmann, Leopold

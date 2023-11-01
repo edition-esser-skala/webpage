@@ -30,7 +30,7 @@ excerpt: Brixi · Caldara · Eberlin · Haydn M · Hofmann · Reinhardt · Tůma
 - [Applausus](/scores/johann-michael-haydn/#work-mh-144) MH 144<br/>
 - [Hermann](/scores/johann-michael-haydn/#work-mh-148) MH 148<br/>
   A ballet pantomime in four parts which is only available from an authentic copy ([F-Pn D-5674](https://gallica.bnf.fr/ark:/12148/btv1b100703412)) by Werigand Rettensteiner, with corrections in Haydn’s hand. The first two parts (*Del Ballo la parte prima* and *seconda*) comprise short instrumental pieces. The third part (*Dedicatio*) contains Latin and German recitativos and arias praising the Germanic chieftain [Arminius](https://en.wikipedia.org/wiki/Arminius). It concludes with a male choir *Magne Deus Teutonum*. The final part (*Le Marcie*) features two pifferi and several percussion instruments (instrumento d’acciaio, tamburo, tamburino, triangolo).
-- The [Proprium Missæ](/projects/proprium-missae/) project now also includes MH 277, 278, 326, 351–353, 355, 356, 360, 363–365, 369–378, 380, 382, 385–387, and 829.
+- The [Proprium Missæ](/projects/haydn-m-proprium-missae/) project now also includes MH 277, 278, 326, 351–353, 355, 356, 360, 363–365, 369–378, 380, 382, 385–387, and 829.
 
 
 ### Hofmann, Leopold

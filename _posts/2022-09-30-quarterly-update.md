@@ -42,7 +42,7 @@ Galuppi was among the first composers whom we published. In this quarter, we hav
 A collection of short cadences and versets for organ, set in the eight psalm tones. For each tone, an initial cadence is followed by four versets and a concluding cadence. Although most sections are only a few measures long, they bear witness to Haydn’s extraordinary talent for counterpoint.
 - [Litaniæ lauretanæ](/scores/johann-michael-haydn/#work-mh-74) MH 74<br/>
   We previously published the Litaniæ lauretanæ [MH 88](/scores/johann-michael-haydn/#work-mh-88), which is an extended version of MH 74 featuring a mixed chorus (SATB), two trumpets, and timpani. Now, the older version of this litany is also available, whose scoring comprises a female chorus (SSSA) and a church trio.
-- The [Proprium Missæ](/projects/proprium-missae/) project now also includes MH 28–34, 93, 162, 180, 192, 345, 368, 381, 383, 391, 398, 410, 429f, 492, 497, 504, 525, 574–576, 627f, 651, 653, 656, 670, 688, 694–696, and 836.
+- The [Proprium Missæ](/projects/haydn-m-proprium-missae/) project now also includes MH 28–34, 93, 162, 180, 192, 345, 368, 381, 383, 391, 398, 410, 429f, 492, 497, 504, 525, 574–576, 627f, 651, 653, 656, 670, 688, 694–696, and 836.
 
 
 ### Hofmann, Leopold
