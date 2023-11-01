@@ -16,11 +16,9 @@ import strictyaml  # type: ignore
 
 from common_functions import (Composer, format_metadata, get_work_list,
                               parse_composer_details, slugify, PAGE_TEMPLATE)
-from project_eybler import add_project_eybler
+from projects import add_project
 from project_caldara import add_project_caldara
 from project_cantorey import add_project_cantorey
-from project_haydn import add_project_haydn
-from project_werner import add_project_werner
 
 try:
     from pat import TOKEN
@@ -306,9 +304,28 @@ def main() -> None:
     generate_score_pages(all_works)
     add_project_caldara(all_works)
     add_project_cantorey(gh_org)
-    add_project_eybler(gh_org)
-    add_project_haydn(gh_org)
-    add_project_werner(gh_org)
+    add_project(
+        gh_org,
+        "eybler-proprium-missae",
+        "Eybler's Proprium Missæ",
+        ("This is an emerging collection of all known short liturgical works "
+         "by Joseph Leopold Edler von Eybler.")
+    )
+    add_project(
+        gh_org,
+        "haydn-m-proprium-missae",
+        "Michael Haydn's Proprium Missæ",
+        ("The *Proprium Missæ* is an emerging collection of all known short "
+         "liturgical works by Johann Michael Haydn, in particular those that "
+         "are freely available in contemporary manuscripts.")
+    )
+    add_project(
+        gh_org,
+        "werner-proprium-missae",
+        "Werner's Proprium Missæ",
+        ("This is an emerging collection of all known short liturgical works "
+         "by Gregor Joseph Werner.")
+    )
     print(gh.get_rate_limit().core)
 
 

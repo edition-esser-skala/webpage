@@ -1,27 +1,18 @@
-"""Pages for the Eybler Proprium Missae project."""
+"""Create pages for projects."""
 
 from operator import itemgetter
 import os
 import tempfile
 
-import git
+from git import Repo
 from github.Organization import Organization
-import strictyaml
+import strictyaml  # type: ignore
 
 from common_functions import (format_metadata, make_part_name,
                               PAGE_TEMPLATE, TABLEROW_TEMPLATE)
 
 
 IGNORED_WORKS = ["template"]
-
-PAGE_INTRO = """
-This is an emerging collection of all known short liturgical
-works by Joseph Leopold Edler von Eybler.
-
-MIDI files of all works are available [in this archive](https://edition.esser-skala.at/assets/pdf/eybler-proprium-missae/midi_collection.zip).
-
-*Current release: {last_tag} containing {n_works} works*
-"""
 
 WORK_TEMPLATE = """\
 ### {title}<br/><span class="work-subtitle">{subtitle}</span>
@@ -35,24 +26,38 @@ WORK_TEMPLATE = """\
 {{: class="work-table"}}
 """
 
-PDF_LINK_TEMPLATE = ("[{part_name}](https://edition.esser-skala.at/assets/"
-                     "pdf/eybler-proprium-missae/{work}/{file})"
-                     "{{: .asset-link{cls}}}")
 
-
-def add_project_eybler(gh_org: Organization) -> None:
-    """Generates a markdown page for the project.
+def add_project(gh_org: Organization,
+                repo: str,
+                title: str,
+                page_intro: str) -> None:
+    """Generates a markdown page for a project.
 
     Args:
         gh_org (Organization): GitHub organization that contains the repo
+        repo (str): git repository of the project
+        title (str): page title
+        page_intro (str): introductory text at the top of the page
     """
     print("Preparing the Proprium Missae project")
 
-    last_tag = gh_org.get_repo("eybler-proprium-missae").get_tags()[0].name
+    PDF_LINK_TEMPLATE = ("[{part_name}](https://edition.esser-skala.at/assets/"
+                         "pdf/{repo}/{work}/{file})"
+                         "{{: .asset-link{cls}}}")
+
+    PAGE_INTRO = """
+    {page_intro}
+
+    MIDI files of all works are available [in this archive](https://edition.esser-skala.at/assets/pdf/{repo}/midi_collection.zip).
+
+    *Current release: {last_tag} containing {n_works} works*
+    """
+
+    last_tag = gh_org.get_repo(repo).get_tags()[0].name
 
     with tempfile.TemporaryDirectory() as repo_dir:
-        git.Repo.clone_from(
-            "https://github.com/edition-esser-skala/eybler-proprium-missae",
+        Repo.clone_from(
+            f"https://github.com/edition-esser-skala/{repo}",
             repo_dir,
             multi_options=["--depth 1", f"--branch {last_tag}"]
         )
@@ -91,12 +96,17 @@ def add_project_eybler(gh_org: Organization) -> None:
     table_rows = "\n".join([TABLEROW_TEMPLATE.format(**w) for w in works])
     work_details = "\n".join([WORK_TEMPLATE.format(**w) for w in works])
 
-    with open("_pages/projects/eybler-proprium-missae.md", "w", encoding="utf-8") as f:
+    with open(f"_pages/projects/{repo}.md", "w", encoding="utf-8") as f:
         f.write(
             PAGE_TEMPLATE.format(
-                title="Eybler's Proprium Missæ",
-                permalink="/projects/eybler-proprium-missae/",
-                intro=PAGE_INTRO.format(last_tag=last_tag, n_works=len(works)),
+                title=title,
+                permalink=f"/projects/{repo}/",
+                intro=PAGE_INTRO.format(
+                    page_intro=page_intro,
+                    repo=repo,
+                    last_tag=last_tag,
+                    n_works=len(works)
+                ),
                 table_rows=table_rows,
                 work_details=work_details
             )
