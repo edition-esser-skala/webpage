@@ -16,7 +16,7 @@ import strictyaml  # type: ignore
 
 from common_functions import (Composer, format_metadata, get_work_list,
                               parse_composer_details, slugify, PAGE_TEMPLATE)
-from projects import add_project
+from projects import add_projects
 from project_caldara import add_project_caldara
 from project_cantorey import add_project_cantorey
 
@@ -302,30 +302,9 @@ def main() -> None:
     highlight_lilypond_snippets("_pages/about/technical-documentation.md")
     all_works = collect_metadata(gh_org, ignored_repos)
     generate_score_pages(all_works)
+    add_projects(gh_org, "_data/projects.yml")
     add_project_caldara(all_works)
     add_project_cantorey(gh_org)
-    add_project(
-        gh_org,
-        "eybler-proprium-missae",
-        "Eybler's Proprium Missæ",
-        ("This is an emerging collection of all known short liturgical works "
-         "by Joseph Leopold Edler von Eybler.")
-    )
-    add_project(
-        gh_org,
-        "haydn-m-proprium-missae",
-        "Michael Haydn's Proprium Missæ",
-        ("The *Proprium Missæ* is an emerging collection of all known short "
-         "liturgical works by Johann Michael Haydn, in particular those that "
-         "are freely available in contemporary manuscripts.")
-    )
-    add_project(
-        gh_org,
-        "werner-proprium-missae",
-        "Werner's Proprium Missæ",
-        ("This is an emerging collection of all known short liturgical works "
-         "by Gregor Joseph Werner.")
-    )
     print(gh.get_rate_limit().core)
 
 

@@ -39,7 +39,7 @@ def add_project(gh_org: Organization,
         title (str): page title
         page_intro (str): introductory text at the top of the page
     """
-    print("Preparing the Proprium Missae project")
+    print(f"Preparing project '{title}'")
 
     PDF_LINK_TEMPLATE = ("[{part_name}](https://edition.esser-skala.at/assets/"
                          "pdf/{repo}/{work}/{file})"
@@ -64,7 +64,6 @@ def add_project(gh_org: Organization,
 
         work_dirs = [w for w in os.listdir(f"{repo_dir}/works")
                      if w not in IGNORED_WORKS]
-        # work_dirs = ["453", "46", "145", "142"]  # for testing
 
         works = []
         for counter, work_dir in enumerate(work_dirs):
@@ -83,6 +82,7 @@ def add_project(gh_org: Organization,
                 assets.append(
                     PDF_LINK_TEMPLATE.format(
                         part_name=make_part_name(score, ".ly"),
+                        repo=repo,
                         work=work_dir,
                         file=score.replace(".ly", ".pdf"),
                         cls=".full-score" if score == "full_score.ly" else ""
@@ -111,3 +111,18 @@ def add_project(gh_org: Organization,
                 work_details=work_details
             )
         )
+
+
+def add_projects(gh_org: Organization, metadata_file: str) -> None:
+    """Generates all project pages..
+
+    Args:
+        gh_org (Organization): GitHub organization that contains the repo
+        metadata_file (str): pathon to YAML file with project metadata
+    """
+
+    with open(metadata_file, encoding="utf-8") as f:
+        projects = strictyaml.load(f.read()).data["projects"]
+
+    for project in projects:
+        add_project(gh_org, **project)
