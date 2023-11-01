@@ -8,10 +8,11 @@ from typing import Optional, Iterable
 import dateutil.parser
 from github import Github
 from github.Organization import Organization
+from github.GithubException import UnknownObjectException
 from pygments import highlight
 from pygments.lexers.lilypond import LilyPondLexer
 from pygments.formatters.html import HtmlFormatter
-import strictyaml
+import strictyaml  # type: ignore
 
 from common_functions import (Composer, format_metadata, get_work_list,
                               parse_composer_details, slugify, PAGE_TEMPLATE)
@@ -148,14 +149,9 @@ def collect_metadata(gh_org: Organization,
     if ignored_repos is None:
         ignored_repos = []
 
-    with open("_data/prints.yml", encoding="utf8") as f:
-        available_prints = {d["repo"]: d["asin"]
-                            for d in strictyaml.load(f.read()).data["prints"]}
-
     works: dict[Composer, list] = {}
 
     for counter, repo in enumerate(repos):
-        # if counter > 1: break  # for testing
         counter_str = f"({counter + 1}/{repos.totalCount})"
 
         if repo.name in ignored_repos:
@@ -197,8 +193,17 @@ def collect_metadata(gh_org: Organization,
 
         metadata["assets"] = [i.name for i in releases[0].get_assets()]
 
-        if repo.name in available_prints:
-            metadata["asin"] = available_prints[repo.name]
+        try:
+            print_data = strictyaml.load(
+                repo  # type: ignore
+                .get_contents("print/printer.yaml")
+                .decoded_content
+                .decode("utf-8")
+            ).data
+            metadata["asin"] = print_data["asin"]
+            print("got it!")
+        except UnknownObjectException:
+            pass
 
         metadata = format_metadata(metadata, gh_org.login)
 
