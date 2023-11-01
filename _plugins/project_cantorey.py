@@ -6,7 +6,7 @@ import tempfile
 
 import git
 from github.Organization import Organization
-import strictyaml
+import strictyaml  # type: ignore
 
 from common_functions import (format_metadata, make_part_name)
 

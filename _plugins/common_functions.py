@@ -2,7 +2,7 @@
 
 from collections import namedtuple
 import re
-import strictyaml
+import strictyaml  # type: ignore
 
 LICENSES = {
     "cc-by-sa-4.0": "![CC BY-SA 4.0](/assets/images/license_cc-by-sa.svg){:width='120px'}",
@@ -293,7 +293,7 @@ def get_work_list(works: list) -> tuple[str, str]:
     return table_rows, work_details
 
 
-def format_reference(ref: list) -> str:
+def format_reference(ref: dict) -> str:
     """Format a reference.
 
     Args:
