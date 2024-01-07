@@ -16,7 +16,7 @@ The Edition Esser-Skala provides practitioners with reliable, [Open Content](htt
 - a selection of the works by Baldassare [Galuppi](/scores/baldassare-galuppi) kept in Dresden
 - Austrian “superstars” such as Joseph Leopold [Eybler](/scores/joseph-leopold-edler-von-eybler), Florian Leopold [Gassmann](/scores/florian-leopold-gassmann), Leopold [Hofmann](/scores/leopold-hofmann), František Ignác Antonín [Tůma](/scores/frantisek-ignac-antonin-tuma), and Gregor Joseph [Werner](/scores/gregor-joseph-werner)
 
-Our editions base upon freely available manuscripts and prints, which are provided by an increasing number of [archives and libraries](sources-for-digital-versions).
+Many of our editions base upon freely available manuscripts and prints, which are provided by an increasing number of [archives and libraries](sources-for-digital-versions).
 
 To ensure high and consistent quality, we follow a set of [editorial guidelines](editorial-guidelines) when preparing our editions. Moreover, we have implemented a largely automated engraving and publishing process. Briefly, this workflow encompasses
 - beautiful scores engraved by [LilyPond](https://lilypond.org),
