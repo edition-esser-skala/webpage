@@ -4,12 +4,6 @@ projects:
     page_intro: >
       This is an emerging collection of all known short liturgical works
       by Joseph Leopold Edler von Eybler.
-  - repo: haydn-m-proprium-missae
-    title: Michael Haydn's Proprium Missæ
-    page_intro: >
-      The *Proprium Missæ* is an emerging collection of all known short
-      liturgical works by Johann Michael Haydn, in particular those that
-      are freely available in contemporary manuscripts.
   - repo: werner-proprium-missae
     title: Werner's Proprium Missæ
     page_intro: >
