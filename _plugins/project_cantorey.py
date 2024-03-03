@@ -71,10 +71,20 @@ def add_project_cantorey(gh_org: Organization) -> None:
             multi_options=["--depth 1", f"--branch {last_tag}"]
         )
 
+        try:
+            with open(f"{repo_dir}/ignored_works", encoding="utf8") as f:
+                ignored_works = [w.strip() for w in f.read().splitlines()
+                                 if not w.startswith("#")]
+        except FileNotFoundError:
+            ignored_works = []
+
         composers = []
         for composer_dir in sorted(os.listdir(f"{repo_dir}/works")):
             works = []
             for work_dir in os.listdir(f"{repo_dir}/works/{composer_dir}"):
+                if f"{composer_dir}/{work_dir}" in ignored_works:
+                    continue
+
                 work_dir_root = f"{repo_dir}/works/{composer_dir}/{work_dir}/"
                 with open(work_dir_root + "metadata.yaml",
                           encoding="utf-8") as f:
@@ -98,6 +108,8 @@ def add_project_cantorey(gh_org: Organization) -> None:
 
                 works.append(metadata)
 
+            if not works:
+                continue
             works.sort(key=itemgetter("title"))
             composers.append(
                 COMPOSER_TEMPLATE.format(

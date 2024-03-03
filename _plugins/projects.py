@@ -12,8 +12,6 @@ from common_functions import (format_metadata, make_part_name,
                               PAGE_TEMPLATE, TABLEROW_TEMPLATE)
 
 
-IGNORED_WORKS = ["template"]
-
 PAGE_INTRO = """\
 {page_intro}
 
@@ -62,8 +60,15 @@ def add_project(gh_org: Organization,
             multi_options=["--depth 1", f"--branch {last_tag}"]
         )
 
+        try:
+            with open(f"{repo_dir}/ignored_works", encoding="utf8") as f:
+                ignored_works = [w.strip() for w in f.read().splitlines()
+                                 if not w.startswith("#")]
+        except FileNotFoundError:
+            ignored_works = ["template"]
+
         work_dirs = [w for w in os.listdir(f"{repo_dir}/works")
-                     if w not in IGNORED_WORKS]
+                     if w not in ignored_works]
 
         works = []
         for counter, work_dir in enumerate(work_dirs):
