@@ -282,9 +282,10 @@ def generate_score_pages(works: dict) -> None:
 def main() -> None:
     """Main workflow.
     """
-    ignored_repos = ["ees-template", "ees-tools", "eybler-proprium-missae",
-                     "haydn-m-proprium-missae", "misc-analyses",
-                     "sacral-lyrics", "webpage", "werner-proprium-missae"]
+    ignored_repos = [".github", "ees-template", "ees-tools",
+                     "eybler-proprium-missae", "haydn-m-proprium-missae",
+                     "misc-analyses", "sacral-lyrics", "webpage",
+                     "tuma-proprium-missae", "werner-proprium-missae"]
 
     gh = Github(TOKEN)
     gh_org = gh.get_organization("edition-esser-skala")
