@@ -166,12 +166,16 @@ def collect_metadata(gh_org: Organization,
             continue
 
         print(f"{counter_str} Analyzing {repo.name}")
-        metadata = strictyaml.load(
-            repo  # type: ignore
-            .get_contents("metadata.yaml", ref=releases[0].tag_name)
-            .decoded_content
-            .decode("utf-8")
-        ).data
+        try:
+            metadata = strictyaml.load(
+                repo  # type: ignore
+                .get_contents("metadata.yaml", ref=releases[0].tag_name)
+                .decoded_content
+                .decode("utf-8")
+            ).data
+        except UnknownObjectException:
+            print(f"UnknownObjectException for {repo.name}")
+            continue
 
         metadata["repo"] = repo.name
         tags = {t.name: t for t in repo.get_tags()}
