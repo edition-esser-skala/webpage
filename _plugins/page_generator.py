@@ -199,7 +199,6 @@ def collect_metadata(gh_org: Organization,
                 .decode("utf-8")
             ).data
             metadata["asin"] = print_data["asin"]
-            print("got it!")
         except UnknownObjectException:
             pass
 
