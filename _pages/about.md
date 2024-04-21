@@ -9,7 +9,7 @@ sidebar:
 
 The Edition Esser-Skala publishes [Open Content](https://opendefinition.org/od) editions of (mainly) 18th century sacral music. All scores may be freely downloaded in PDF format. Moreover, selected titles are available in print from Kindle Direct Publishing (at cost price).
 
-Scores by the Edition Esser-Skala *will always remain free and open*. Nevertheless, to be able to continue our publishing efforts, we appreciate your *support*, e.g. via [PayPal](paypal.me/esserskala).
+Scores by the Edition Esser-Skala *will always remain free and open*. Nevertheless, to be able to continue our publishing efforts, we appreciate your *support*, e.g. via [PayPal](https://paypal.me/esserskala).
 {: .notice--info}
 
 Currently, our focus lies on the following composers:
