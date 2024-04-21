@@ -7,14 +7,31 @@ sidebar:
   nav: about
 ---
 
-The Edition Esser-Skala provides practitioners with reliable, [Open Content](https://opendefinition.org/od) modern editions of (mainly) 18th century sacral music. All scores may be freely downloaded in PDF format. Moreover, selected titles are available in print from Kindle Direct Publishing (at cost price). Our highlights include
+The Edition Esser-Skala publishes [Open Content](https://opendefinition.org/od) editions of (mainly) 18th century sacral music. All scores may be freely downloaded in PDF format. Moreover, selected titles are available in print from Kindle Direct Publishing (at cost price).
 
-- various unpublished works by Johann [Michael Haydn](/scores/johann-michael-haydn), many of which are collected in the [Proprium Missæ](/projects/haydn-m-proprium-missae/) project
-- passions and oratorios by Johann Heinrich [Rolle](/scores/johann-heinrich-rolle) as well as Gottfried Heinrich [Stölzel](/scores/gottfried-heinrich-stoelzel)
-- the first edition of the *Missa Providentiæ* by Antonio [Caldara](/scores/antonio-caldara), which includes a *Credo* by Jan Dismas Zelenka (ZWV 31)
+Scores by the Edition Esser-Skala *will always remain free and open*. Nevertheless, to be able to continue our publishing efforts, we appreciate your *support*, e.g. via [PayPal](paypal.me/esserskala).
+{: .notice--info}
+
+Currently, our focus lies on the following composers:
+
+Johann Michael Haydn
+: Our [editions](/scores/johann-michael-haydn) include litanies, vespers, and cantatas. Moreover, the [Proprium Missæ](/projects/haydn-m-proprium-missae/) project represents a comprehensive collection of short liturgical works (graduals, offertories, hymns, …).
+
+Joseph Leopold Eybler
+: We are working on a complete edition of Eybler's sacral music, including his [masses](/scores/joseph-leopold-edler-von-eybler) and [short liturgical works](/projects/eybler-proprium-missae).
+
+František Ignác Antonín Tůma
+: We are currently exploring the body of Tůma’s compositions and eventually plan to assemble a catalogue of works. Meanwhile, several of his [works](/scores/frantisek-ignac-antonin-tuma) are available as modern editions.
+
+Gregor Joseph Werner
+: We offer editions of Werner’s [masses](/scores/gregor-joseph-werner) and [short liturgical works](/projects/werner-proprium-missae). Concurrently, we are working on a [catalogue](https://www.gregor-joseph-werner.at) of his works.
+
+But don't miss out our other editions, which include several highlights, such as
+
+- the *Missa Providentiæ* by Antonio [Caldara](/scores/antonio-caldara), which includes a *Credo* by Jan Dismas Zelenka (ZWV 31)
+- a reissue of the *Wohlgeübter Organist* by Johann Anton [Kobrich](/scores/johann-anton-kobrich), a collection of preludes, fugues, and toccatas that was first printed in the 1760s
 - a bilingual (Danish/German) edition of Friedrich Ludwig Æmilius [Kunzen](/scores/friedrich-ludwig-aemilius-kunzen)'s *Skabningens Halleluja* (*Das Halleluja der Schöpfung*)
-- a selection of the works by Baldassare [Galuppi](/scores/baldassare-galuppi) kept in Dresden
-- Austrian “superstars” such as Joseph Leopold [Eybler](/scores/joseph-leopold-edler-von-eybler), Florian Leopold [Gassmann](/scores/florian-leopold-gassmann), Leopold [Hofmann](/scores/leopold-hofmann), František Ignác Antonín [Tůma](/scores/frantisek-ignac-antonin-tuma), and Gregor Joseph [Werner](/scores/gregor-joseph-werner)
+- two passions (*Der gute Hirte* and *Jesu, deine Passion*) by Gottfried Heinrich [Stölzel](/scores/gottfried-heinrich-stoelzel)
 
 Many of our editions base upon freely available manuscripts and prints, which are provided by an increasing number of [archives and libraries](sources-for-digital-versions).
 
