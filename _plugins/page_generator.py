@@ -20,7 +20,7 @@ from common_functions import (Composer,
                               get_tag_date,
                               parse_composer_details,
                               slugify)
-from project_cantorey import add_project_cantorey
+from cantorey import add_cantorey
 
 try:
     from pat import TOKEN
@@ -54,11 +54,11 @@ about:
         url: /about/technical-documentation
 
 scores:
-- title: ❦ Projects
+{}
+- title: ❦ Bonus
   children:
     - title: Cantorey Performance Materials
       url: /projects/cantorey-performance-materials
-{}
 """
 
 PAGE_TEMPLATE = """\
@@ -361,7 +361,7 @@ def main() -> None:
     # with open("all_works.pickle", "rb") as f:
     #     all_works = pickle.load(f)
     generate_score_pages(all_works, gh_org, "_data/page_settings.yml")
-    add_project_cantorey(gh_org)
+    add_cantorey(gh_org)
     print(gh.get_rate_limit().core)
 
 

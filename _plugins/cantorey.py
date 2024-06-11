@@ -50,13 +50,13 @@ def format_composer(c: dict) -> str:
     return c["last"] + ", " + c["first"] + " " + c["suffix"]
 
 
-def add_project_cantorey(gh_org: Organization) -> None:
+def add_cantorey(gh_org: Organization) -> None:
     """Generates a markdown page for the project.
 
     Args:
         gh_org (Organization): GitHub organization that contains the repo
     """
-    print("Preparing the Cantorey Performace Materials project")
+    print("Generating page for cantorey-performance-materials")
 
     last_tag = (gh_org
                 .get_repo("cantorey-performance-materials")
