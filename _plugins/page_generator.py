@@ -5,7 +5,6 @@ import os
 import re
 from typing import Optional, Iterable
 
-import dateutil.parser
 from github import Github
 from github.Organization import Organization
 from github.GithubException import UnknownObjectException
@@ -59,6 +58,31 @@ scores:
     - title: Cantorey Performance Materials
       url: /projects/cantorey-performance-materials
 {}
+"""
+
+PAGE_TEMPLATE = """\
+---
+title: {title}
+permalink: {permalink}
+sidebar:
+  nav: scores
+---
+
+<div class="composer-details" markdown="1">
+{composer_details}
+</div>
+
+{page_intro}
+
+|ID|Title|Genre|
+|--|-----|-----|
+{table_rows}
+{{: id="toctable" class="overview-table"}}
+
+
+## Works
+
+{work_details}
 """
 
 
@@ -175,15 +199,8 @@ def collect_metadata(gh_org: Organization,
         tags = {t.name: t for t in repo.get_tags()}
 
         metadata["releases"] = [
-            dict(
-                version=r.tag_name,
-                date=dateutil.parser.parse(
-                    tags[r.tag_name]  # type: ignore
-                    .commit
-                    .commit
-                    .last_modified
-                ).strftime("%Y-%m-%d")
-            )
+            {"version": r.tag_name,
+             "date": get_tag_date(tags[r.tag_name])}  # type: ignore
             for r in releases
         ]
 
@@ -211,11 +228,14 @@ def collect_metadata(gh_org: Organization,
     return works
 
 
-def generate_score_pages(works: dict, page_settings_file: str) -> None:
+def generate_score_pages(works: dict,
+                         gh_org: Organization,
+                         page_settings_file: str) -> None:
     """Generates one markdown file for each composer.
 
     Args:
         works (dict): works metadata
+        gh_org (github.Organization): GitHub organization
         page_settings_file (str): YAML file with optional page settings
     """
     with open(page_settings_file, encoding="utf-8") as f:
@@ -238,24 +258,39 @@ def generate_score_pages(works: dict, page_settings_file: str) -> None:
 
         slug = slugify(slug)
         permalink = f"/scores/{slug}/"
+        print("Generating page for", slug)
 
         # composer details
         composer_details = ""
         details_file = f"_data/composers/{slug}.yml"
         if os.path.exists(details_file):
-            print("Adding composer details for", slug)
+            print("  -> Adding composer details")
             composer_details = parse_composer_details(details_file)
-
-        # works
-        table_rows, work_details = get_work_list(
-            sorted(works[composer], key=itemgetter("title")),
-        )
 
         # page intro
         try:
             page_intro = page_settings[slug]["page_intro"]
         except KeyError:
             page_intro = ""
+
+        # works from individual repos
+        table_rows_repos, work_details_repos = get_work_list(
+            sorted(works[composer], key=itemgetter("title")),
+        )
+
+        # works from collection repo
+        try:
+            coll_repo = page_settings[slug]["collection_repo"]
+            table_rows_coll, work_details_coll = get_collection_works(
+                coll_repo, gh_org
+            )
+        except KeyError:
+            table_rows_coll = []
+            work_details_coll = []
+
+        # combine table rows and work details
+        table_rows = "\n".join(sorted(table_rows_repos + table_rows_coll))
+        work_details = "\n".join(sorted(work_details_repos + work_details_coll))
 
         # save composer page
         with open(f"_pages/scores/{slug}.md", "w", encoding="utf-8") as f:
@@ -272,7 +307,7 @@ def generate_score_pages(works: dict, page_settings_file: str) -> None:
 
         # add navigation entry
         last_initial = composer.last[0]
-        composer_nav = dict(title=title, url=permalink)
+        composer_nav = {"title": title, "url": permalink}
         try:
             navigation[last_initial] += [composer_nav]
         except KeyError:
@@ -280,7 +315,7 @@ def generate_score_pages(works: dict, page_settings_file: str) -> None:
 
 
     # save navigation
-    nav_dict = [dict(title=initial, children=children)
+    nav_dict = [{"title": initial, "children": children}
                 for initial, children in navigation.items()]
 
     with open("_data/navigation.yml", "w", encoding="utf-8") as f:

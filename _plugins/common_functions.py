@@ -1,7 +1,14 @@
 """Common functions."""
 
+from operator import itemgetter
+import os
 from collections import namedtuple
 import re
+import tempfile
+
+import dateutil.parser
+from git import Repo, Tag
+from github.Organization import Organization
 import strictyaml  # type: ignore
 
 LICENSES = {
@@ -56,36 +63,15 @@ SLUG_REPLACE = {
 RELEASE_TEMPLATE = ("[{version}](https://github.com/{org}/"
                     "{repo}/releases/tag/{version})&nbsp;({date})")
 
-ASSET_TEMPLATE = ("[{part_name}](https://github.com/{org}/"
-                  "{repo}/releases/download/{version}/{file})"
-                  "{{: .asset-link{cls}}}")
+ASSET_TEMPLATE_GH = ("[{part_name}](https://github.com/{org}/"
+                     "{repo}/releases/download/{version}/{file})"
+                     "{{: .asset-link{cls}}}")
+
+ASSET_TEMPLATE_SERVER = ("[{part_name}](https://edition.esser-skala.at/assets/"
+                         "pdf/{repo}/{work}/{file})"
+                         "{{: .asset-link{cls}}}")
 
 TABLEROW_TEMPLATE = "|[{id}](#work-{id_slug})|{title}|{genre}|"
-
-PAGE_TEMPLATE = """\
----
-title: {title}
-permalink: {permalink}
-sidebar:
-  nav: scores
----
-
-<div class="composer-details" markdown="1">
-{composer_details}
-</div>
-
-{page_intro}
-
-|ID|Title|Genre|
-|--|-----|-----|
-{table_rows}
-{{: id="toctable" class="overview-table"}}
-
-
-## Works
-
-{work_details}
-"""
 
 INTRO_TEMPLATE = """\
 |<span class="label-col">born</span>|{born}|
@@ -188,7 +174,7 @@ def format_metadata(metadata: dict, gh_org_name: str) -> dict:
     # asset links
     if "assets" in metadata:
         assets = [
-            ASSET_TEMPLATE.format(
+            ASSET_TEMPLATE_GH.format(
                 part_name=make_part_name(asset_file, ".pdf"),
                 org=gh_org_name,
                 repo=metadata["repo"],
@@ -301,7 +287,7 @@ def format_work_entry(work: dict) -> str:
     return "\n".join(res)
 
 
-def get_work_list(works: list) -> tuple[str, str]:
+def get_work_list(works: list) -> tuple[list[str], list[str]]:
     """Get work table rows and work details.
 
     Args:
@@ -310,8 +296,8 @@ def get_work_list(works: list) -> tuple[str, str]:
     Returns:
         tuple[str, str]: table rows and work details
     """
-    table_rows = "\n".join([TABLEROW_TEMPLATE.format(**w) for w in works])
-    work_details = "\n".join([format_work_entry(w) for w in works])
+    table_rows = [TABLEROW_TEMPLATE.format(**w) for w in works]
+    work_details = [format_work_entry(w) for w in works]
     return table_rows, work_details
 
 
@@ -409,8 +395,81 @@ def parse_composer_details(file: str) -> str:
     )
 
 
-if __name__ == "__main__":
-    for yfile in ["johann-michael-haydn",
-                  "johann-georg-zechner",
-                  "gregor-joseph-werner"]:
-        print(parse_composer_details(f"_data/composers/{yfile}.yml"))
+def get_tag_date(tag: Tag) -> str:
+    """Return the date of a git tag in ISO 8601 format."""
+    return (dateutil.parser.parse(tag.commit.commit.last_modified)
+                          .strftime("%Y-%m-%d"))
+
+
+def get_collection_works(repo: str,
+                         gh_org: Organization) -> tuple[list[str], list[str]]:
+    """Generates a markdown page for a project."""
+
+    print("  -> Adding collection repository", repo)
+    last_tag = gh_org.get_repo(repo).get_tags()[0]
+
+    with tempfile.TemporaryDirectory() as repo_dir:
+        Repo.clone_from(
+            f"https://github.com/edition-esser-skala/{repo}",
+            repo_dir,
+            multi_options=["--depth 1", f"--branch {last_tag.name}"]
+        )
+
+        try:
+            with open(f"{repo_dir}/ignored_works", encoding="utf8") as f:
+                ignored_works = [w.strip() for w in f.read().splitlines()
+                                 if not w.startswith("#")]
+        except FileNotFoundError:
+            ignored_works = ["template"]
+
+        work_dirs = os.listdir(f"{repo_dir}/works")
+
+        works = []
+        for counter, work_dir in enumerate(work_dirs):
+            counter_str = f"({counter + 1}/{len(work_dirs)})"
+
+            if work_dir in ignored_works:
+                print(f"     {counter_str} Ignoring {work_dir}")
+                continue
+
+            print(f"     {counter_str} Adding {work_dir}")
+            with open(f"{repo_dir}/works/{work_dir}/metadata.yaml",
+                      encoding="utf-8") as f:
+                metadata = strictyaml.load(f.read()).data
+
+            metadata = format_metadata(metadata, gh_org.login)
+
+            assets = []
+            for score in os.listdir(f"{repo_dir}/works/{work_dir}/scores"):
+                assets.append(
+                    ASSET_TEMPLATE_SERVER.format(
+                        part_name=make_part_name(score, ".ly"),
+                        repo=repo,
+                        work=work_dir,
+                        file=score.replace(".ly", ".pdf"),
+                        cls=".full-score" if score == "full_score.ly" else ""
+                    )
+                )
+            assets.append(
+                '[<i class="fas fa-music"></i>]'
+                "(https://edition.esser-skala.at/assets/"
+                f"pdf/{repo}/midi_collection.zip){{: .asset-link}}"
+            )
+
+            metadata["asset_links"] = " ".join(assets)
+            metadata["latest_release"] = RELEASE_TEMPLATE.format(
+                version=last_tag.name,
+                org=gh_org.login,
+                repo=repo,
+                date=get_tag_date(last_tag)
+            )
+            metadata["repo"] = repo
+
+            works.append(metadata)
+        works.sort(key=itemgetter("title"))
+
+    # create table rows and work details
+    table_rows = [TABLEROW_TEMPLATE.format(**w) for w in works]
+    work_details = [format_work_entry(w) for w in works]
+
+    return table_rows, work_details
