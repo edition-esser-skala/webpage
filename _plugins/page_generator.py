@@ -58,12 +58,6 @@ scores:
       url: /projects/caldara-at-dresden
     - title: Cantorey Performance Materials
       url: /projects/cantorey-performance-materials
-    - title: Eybler's Proprium Missæ
-      url: /projects/eybler-proprium-missae
-    - title: Michael Haydn's Proprium Missæ
-      url: /projects/haydn-m-proprium-missae
-    - title: Werner's Proprium Missæ
-      url: /projects/werner-proprium-missae
 {}
 """
 
@@ -288,9 +282,9 @@ def main() -> None:
     """
     ignored_repos = [".github", "ees-template", "ees-tools",
                      "eybler-proprium-missae", "haydn-m-proprium-missae",
-                     "misc-analyses", "sacral-lyrics", "webpage",
-                     "tuma-proprium-missae", "werner-catalogue-of-works",
-                     "werner-proprium-missae"]
+                     "imslp-lists", "misc-analyses", "sacral-lyrics", "webpage",
+                     "tuma-catalogue-of-works", "tuma-complete-works",
+                     "werner-catalogue-of-works", "werner-proprium-missae"]
 
     gh = Github(TOKEN)
     gh_org = gh.get_organization("edition-esser-skala")
@@ -307,7 +301,7 @@ def main() -> None:
     highlight_lilypond_snippets("_pages/about/technical-documentation.md")
     all_works = collect_metadata(gh_org, ignored_repos)
     generate_score_pages(all_works)
-    add_projects(gh_org, "_data/projects.yml")
+    add_projects(gh_org, all_works, "_data/projects.yml")
     add_project_caldara(all_works)
     add_project_cantorey(gh_org)
     print(gh.get_rate_limit().core)
