@@ -1,0 +1,16 @@
+page_settings:
+  joseph-leopold-edler-von-eybler:
+    collection_repo: eybler-proprium-missae
+    page_intro: >
+      We are working on a complete edition of Eybler's sacred music. Currently, the following works are available:
+  johann-michael-haydn:
+    collection_repo: haydn-m-proprium-missae
+    page_intro: >
+      The *Proprium Missæ* is an emerging collection of all known short
+      liturgical works by Johann Michael Haydn, in particular those that
+      are freely available in contemporary manuscripts.
+  gregor-joseph-werner:
+    collection_repo: werner-proprium-missae
+    page_intro: >
+      This is an emerging collection of all known short liturgical works
+      by Gregor Joseph Werner.

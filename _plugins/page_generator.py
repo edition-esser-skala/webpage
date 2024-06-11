@@ -211,12 +211,16 @@ def collect_metadata(gh_org: Organization,
     return works
 
 
-def generate_score_pages(works: dict) -> None:
+def generate_score_pages(works: dict, page_settings_file: str) -> None:
     """Generates one markdown file for each composer.
 
     Args:
         works (dict): works metadata
+        page_settings_file (str): YAML file with optional page settings
     """
+    with open(page_settings_file, encoding="utf-8") as f:
+        page_settings = strictyaml.load(f.read()).data["page_settings"]
+
     navigation: dict[str, list] = {}
 
     for composer in sorted(works.keys(),
@@ -247,6 +251,12 @@ def generate_score_pages(works: dict) -> None:
             sorted(works[composer], key=itemgetter("title")),
         )
 
+        # page intro
+        try:
+            page_intro = page_settings[slug]["page_intro"]
+        except KeyError:
+            page_intro = ""
+
         # save composer page
         with open(f"_pages/scores/{slug}.md", "w", encoding="utf-8") as f:
             f.write(
@@ -254,7 +264,7 @@ def generate_score_pages(works: dict) -> None:
                     title=title,
                     permalink=permalink,
                     composer_details=composer_details,
-                    page_intro="",
+                    page_intro=page_intro,
                     table_rows=table_rows,
                     work_details=work_details
                 )
