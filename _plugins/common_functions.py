@@ -144,7 +144,7 @@ REFERENCE_TEMPLATE = {
     "website": "- {author} ({year}). {title}."
 }
 
-Composer = namedtuple("Composer", "first last suffix")
+Composer = namedtuple("Composer", "first last suffix", defaults=[""])
 
 
 def format_metadata(metadata: dict, gh_org_name: str) -> dict:
