@@ -60,24 +60,6 @@ ASSET_TEMPLATE = ("[{part_name}](https://github.com/{org}/"
                   "{repo}/releases/download/{version}/{file})"
                   "{{: .asset-link{cls}}}")
 
-ENTRY_PRINT_TEMPLATE = """
-|<span class="label-col">Print</span>|[full score](https://amazon.de/dp/{})|"""
-
-WORK_TEMPLATE = """\
-### {title}<br/><span class="work-subtitle">{subtitle}</span>
-{{: #work-{id_slug}}}
-
-|<span class="label-col">genre</span>|{genre}|
-|<span class="label-col">scoring</span>|{scoring}|
-|<span class="label-col">latest release</span>|{latest_release}|
-|<span class="label-col">scores</span>|{asset_links}|
-|<span class="label-col">IMSLP</span>|[scores and parts](https://imslp.org/wiki/{imslp})|{entry_print}
-|<span class="label-col">previous releases</span>|{old_releases}|
-|<span class="label-col">source</span>|[GitHub](https://github.com/edition-esser-skala/{repo})|
-|<span class="label-col">license</span>|{license}|
-{{: class="work-table"}}
-"""
-
 TABLEROW_TEMPLATE = "|[{id}](#work-{id_slug})|{title}|{genre}|"
 
 PAGE_TEMPLATE = """\
@@ -89,10 +71,10 @@ sidebar:
 ---
 
 <div class="composer-details" markdown="1">
-{intro}
+{composer_details}
 </div>
 
-## Overview
+{page_intro}
 
 |ID|Title|Genre|
 |--|-----|-----|
@@ -185,11 +167,6 @@ def format_metadata(metadata: dict, gh_org_name: str) -> dict:
     # misc fields
     metadata["license"] = LICENSES[metadata["license"]]
     metadata["id_slug"] = slugify(metadata["id"])
-    metadata["imslp"] = metadata.get("imslp", "")
-    if "asin" in metadata:
-        metadata["entry_print"] = ENTRY_PRINT_TEMPLATE.format(metadata["asin"])
-    else:
-        metadata["entry_print"] = ""
 
     # releases
     if "releases" in metadata:
@@ -281,6 +258,49 @@ def slugify(s: str) -> str:
     return slug
 
 
+def format_work_entry(work: dict) -> str:
+    """Formats the work entry."""
+
+    # title
+    title = (
+        '### {title}<br/><span class="work-subtitle">{subtitle}</span>\n'
+        '{{: #work-{id_slug}}}\n'
+    )
+    res = [title.format(**work)]
+
+    # table rows
+    row = '|<span class="label-col">{}</span>|{}|'
+    res.append(row.format("genre", work["genre"]))
+    if "festival" in work:
+        res.append(row.format("festival", work["festival"]))
+    res.append(row.format("scoring", work["scoring"]))
+    res.append(row.format("scores", work["asset_links"]))
+    if "imslp" in work:
+        res.append(
+            row.format(
+                "IMSLP",
+                f"[scores and parts](https://imslp.org/wiki/{work['imslp']})"
+            )
+        )
+    if "asin" in work:
+        res.append(
+            row.format(
+                "print",
+                f"[full score](https://amazon.de/dp/{work['asin']})"
+            )
+        )
+    res.append(
+        row.format(
+            "source",
+            f"[GitHub](https://github.com/edition-esser-skala/{work['repo']})"
+        )
+    )
+    res.append(row.format("license", work["license"]))
+    res.append('{: class="work-table"}')
+
+    return "\n".join(res)
+
+
 def get_work_list(works: list) -> tuple[str, str]:
     """Get work table rows and work details.
 
@@ -291,7 +311,7 @@ def get_work_list(works: list) -> tuple[str, str]:
         tuple[str, str]: table rows and work details
     """
     table_rows = "\n".join([TABLEROW_TEMPLATE.format(**w) for w in works])
-    work_details = "\n".join([WORK_TEMPLATE.format(**w) for w in works])
+    work_details = "\n".join([format_work_entry(w) for w in works])
     return table_rows, work_details
 
 

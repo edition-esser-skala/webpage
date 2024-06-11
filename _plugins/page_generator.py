@@ -236,11 +236,11 @@ def generate_score_pages(works: dict) -> None:
         permalink = f"/scores/{slug}/"
 
         # composer details
-        intro = ""
+        composer_details = ""
         details_file = f"_data/composers/{slug}.yml"
         if os.path.exists(details_file):
             print("Adding composer details for", slug)
-            intro = parse_composer_details(details_file)
+            composer_details = parse_composer_details(details_file)
 
         # works
         table_rows, work_details = get_work_list(
@@ -253,7 +253,8 @@ def generate_score_pages(works: dict) -> None:
                 PAGE_TEMPLATE.format(
                     title=title,
                     permalink=permalink,
-                    intro=intro,
+                    composer_details=composer_details,
+                    page_intro="",
                     table_rows=table_rows,
                     work_details=work_details
                 )
@@ -278,13 +279,22 @@ def generate_score_pages(works: dict) -> None:
 
 
 def main() -> None:
-    """Main workflow.
-    """
-    ignored_repos = [".github", "ees-template", "ees-tools",
-                     "eybler-proprium-missae", "haydn-m-proprium-missae",
-                     "imslp-lists", "misc-analyses", "sacral-lyrics", "webpage",
-                     "tuma-catalogue-of-works", "tuma-complete-works",
-                     "werner-catalogue-of-works", "werner-proprium-missae"]
+    """Main workflow."""
+    ignored_repos = [
+        ".github",
+        "ees-template",
+        "ees-tools",
+        "eybler-proprium-missae",
+        "haydn-m-proprium-missae",
+        "imslp-lists",
+        "misc-analyses",
+        "sacral-lyrics",
+        "tuma-catalogue-of-works",
+        "tuma-complete-works",
+        "webpage",
+        "werner-catalogue-of-works",
+        "werner-proprium-missae"
+    ]
 
     gh = Github(TOKEN)
     gh_org = gh.get_organization("edition-esser-skala")
