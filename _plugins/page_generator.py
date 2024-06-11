@@ -13,10 +13,13 @@ from pygments.lexers.lilypond import LilyPondLexer
 from pygments.formatters.html import HtmlFormatter
 import strictyaml  # type: ignore
 
-from common_functions import (Composer, format_metadata, get_work_list,
-                              parse_composer_details, slugify, PAGE_TEMPLATE)
-from projects import add_projects
-from project_caldara import add_project_caldara
+from common_functions import (Composer,
+                              format_metadata,
+                              get_work_list,
+                              get_collection_works,
+                              get_tag_date,
+                              parse_composer_details,
+                              slugify)
 from project_cantorey import add_project_cantorey
 
 try:
@@ -53,8 +56,6 @@ about:
 scores:
 - title: ❦ Projects
   children:
-    - title: Caldara@Dresden
-      url: /projects/caldara-at-dresden
     - title: Cantorey Performance Materials
       url: /projects/cantorey-performance-materials
 {}
@@ -355,9 +356,11 @@ def main() -> None:
                       "Technical documentation",)
     highlight_lilypond_snippets("_pages/about/technical-documentation.md")
     all_works = collect_metadata(gh_org, ignored_repos)
-    generate_score_pages(all_works)
-    add_projects(gh_org, all_works, "_data/projects.yml")
-    add_project_caldara(all_works)
+    # with open("all_works.pickle", "wb") as f:
+    #     pickle.dump(all_works, f)
+    # with open("all_works.pickle", "rb") as f:
+    #     all_works = pickle.load(f)
+    generate_score_pages(all_works, gh_org, "_data/page_settings.yml")
     add_project_cantorey(gh_org)
     print(gh.get_rate_limit().core)
 
