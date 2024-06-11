@@ -88,7 +88,9 @@ sidebar:
   nav: scores
 ---
 
+<div class="composer-details" markdown="1">
 {intro}
+</div>
 
 ## Overview
 
