@@ -63,13 +63,13 @@ SLUG_REPLACE = {
 RELEASE_TEMPLATE = ("[{version}](https://github.com/{org}/"
                     "{repo}/releases/tag/{version})&nbsp;({date})")
 
-ASSET_TEMPLATE_GH = ("[{part_name}](https://github.com/{org}/"
-                     "{repo}/releases/download/{version}/{file})"
-                     "{{: .asset-link{cls}}}")
+ASSET_LINK_GH = ("(https://github.com/{org}/"
+                 "{repo}/releases/download/{version}/{file})"
+                 "{{: .asset-link{cls}}}")
 
-ASSET_TEMPLATE_SERVER = ("[{part_name}](https://edition.esser-skala.at/assets/"
-                         "pdf/{repo}/{work}/{file})"
-                         "{{: .asset-link{cls}}}")
+ASSET_LINK_SERVER = ("(https://edition.esser-skala.at/assets/"
+                     "pdf/{repo}/{work}/{file})"
+                     "{{: .asset-link{cls}}}")
 
 TABLEROW_TEMPLATE = "|[{id}](#work-{id_slug})|{title}|{genre}|"
 
@@ -173,9 +173,9 @@ def format_metadata(metadata: dict, gh_org_name: str) -> dict:
 
     # asset links
     if "assets" in metadata:
-        assets = [
-            ASSET_TEMPLATE_GH.format(
-                part_name=make_part_name(asset_file, ".pdf"),
+        assets = {
+            make_part_name(asset_file, ".pdf"):
+            ASSET_LINK_GH.format(
                 org=gh_org_name,
                 repo=metadata["repo"],
                 version=current_release["version"],
@@ -183,8 +183,15 @@ def format_metadata(metadata: dict, gh_org_name: str) -> dict:
                 cls=".full-score" if asset_file == "full_score.pdf" else ""
             )
             for asset_file in metadata["assets"]
-        ]
-        metadata["asset_links"] = " ".join(assets)
+        }
+
+        midi_file = "midi_collection.zip"
+        if midi_file in assets:
+            metadata["midi"] = assets[midi_file]
+            del assets[midi_file]
+
+        metadata["asset_links"] = " ".join([f"[{k}]{v}"
+                                            for k, v in assets.items()])
 
     return metadata
 
@@ -217,7 +224,7 @@ def make_part_name(filename: str, extension: str) -> str:
         str: Reformatted part name.
     """
     if filename == "midi_collection.zip":
-        return '<i class="fas fa-music"></i>'
+        return filename
 
     name = filename.removesuffix(extension)
     if name.startswith("coro_"):
@@ -256,11 +263,30 @@ def format_work_entry(work: dict) -> str:
 
     # table rows
     row = '|<span class="label-col">{}</span>|{}|'
+
+    ## genre
     res.append(row.format("genre", work["genre"]))
+
+    ## festival (optional)
     if "festival" in work:
         res.append(row.format("festival", work["festival"]))
+
+    ## scoring
     res.append(row.format("scoring", work["scoring"]))
+
+    ## full score and parts
     res.append(row.format("scores", work["asset_links"]))
+
+    ## MIDI collection (optional)
+    if "midi" in work:
+        res.append(
+            row.format(
+                "MIDI",
+                f'[<i class="fas fa-music"></i>]{work["midi"]}'
+            )
+        )
+
+    ## IMSLP link (optional)
     if "imslp" in work:
         res.append(
             row.format(
@@ -268,6 +294,8 @@ def format_work_entry(work: dict) -> str:
                 f"[scores and parts](https://imslp.org/wiki/{work['imslp']})"
             )
         )
+
+    ## link to printed edition (optional)
     if "asin" in work:
         res.append(
             row.format(
@@ -275,13 +303,19 @@ def format_work_entry(work: dict) -> str:
                 f"[full score](https://amazon.de/dp/{work['asin']})"
             )
         )
+
+    ## source code
     res.append(
         row.format(
             "source",
             f"[GitHub](https://github.com/edition-esser-skala/{work['repo']})"
         )
     )
+
+    ## license
     res.append(row.format("license", work["license"]))
+
+    # CSS class
     res.append('{: class="work-table"}')
 
     return "\n".join(res)
@@ -439,24 +473,24 @@ def get_collection_works(repo: str,
 
             metadata = format_metadata(metadata, gh_org.login)
 
-            assets = []
-            for score in os.listdir(f"{repo_dir}/works/{work_dir}/scores"):
-                assets.append(
-                    ASSET_TEMPLATE_SERVER.format(
-                        part_name=make_part_name(score, ".ly"),
-                        repo=repo,
-                        work=work_dir,
-                        file=score.replace(".ly", ".pdf"),
-                        cls=".full-score" if score == "full_score.ly" else ""
-                    )
+            assets = {
+                make_part_name(score, ".ly"):
+                ASSET_LINK_SERVER.format(
+                    repo=repo,
+                    work=work_dir,
+                    file=score.replace(".ly", ".pdf"),
+                    cls=".full-score" if score == "full_score.ly" else ""
                 )
-            assets.append(
-                '[<i class="fas fa-music"></i>]'
-                "(https://edition.esser-skala.at/assets/"
-                f"pdf/{repo}/midi_collection.zip){{: .asset-link}}"
+                for score in os.listdir(f"{repo_dir}/works/{work_dir}/scores")
+            }
+            metadata["asset_links"] = " ".join([f"[{k}]{v}"
+                                                for k, v in assets.items()])
+
+            metadata["midi"] = (
+                f"(https://edition.esser-skala.at/assets/pdf/{repo}/"
+                "midi_collection.zip){: .asset-link}"
             )
 
-            metadata["asset_links"] = " ".join(assets)
             metadata["latest_release"] = RELEASE_TEMPLATE.format(
                 version=last_tag.name,
                 org=gh_org.login,

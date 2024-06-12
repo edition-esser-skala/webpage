@@ -15,3 +15,4 @@ pat.py
 read_metadata.py
 instrument_data.csv
 settings.json
+all_works.pickle
