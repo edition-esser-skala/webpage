@@ -10,21 +10,21 @@ sidebar:
 The Edition Esser-Skala publishes [Open Content](https://opendefinition.org/od) editions of (mainly) 18th century sacral music. All scores may be freely downloaded in PDF format. Moreover, selected titles are available in print from Kindle Direct Publishing (at cost price).
 
 Scores by the Edition Esser-Skala *will always remain free and open*. Nevertheless, to be able to continue our publishing efforts, we appreciate your *support*, e.g. via [PayPal](https://paypal.me/esserskala).
-{: .notice--info}
+{: .notice--highlight}
 
 Currently, our focus lies on the following composers:
 
 Johann Michael Haydn
-: Our [editions](/scores/johann-michael-haydn) include litanies, vespers, and cantatas. Moreover, the [Proprium Missæ](/projects/haydn-m-proprium-missae/) project represents a comprehensive collection of short liturgical works (graduals, offertories, hymns, …).
+: Our [editions](/scores/johann-michael-haydn) include litanies, vespers, and cantatas. Moreover, the Proprium Missæ project represents a comprehensive collection of short liturgical works (graduals, offertories, hymns, …).
 
 Joseph Leopold Eybler
-: We are working on a complete edition of Eybler's sacral music, including his [masses](/scores/joseph-leopold-edler-von-eybler) and [short liturgical works](/projects/eybler-proprium-missae).
+: We are working on a [complete edition](/scores/joseph-leopold-edler-von-eybler) of Eybler's sacral music, including his masses and short liturgical works.
 
 František Ignác Antonín Tůma
-: We are currently exploring the body of Tůma’s compositions and eventually plan to assemble a catalogue of works. Meanwhile, several of his [works](/scores/frantisek-ignac-antonin-tuma) are available as modern editions.
+: We are working on a [complete edition](/scores/frantisek-ignac-antonin-tuma) of Tůma’s compositions, as well as on a [catalogue](http://tumw.esser-skala.at) of his works.
 
 Gregor Joseph Werner
-: We offer editions of Werner’s [masses](/scores/gregor-joseph-werner) and [short liturgical works](/projects/werner-proprium-missae). Concurrently, we are working on a [catalogue](https://www.gregor-joseph-werner.at) of his works.
+: We offer editions of Werner’s [sacred music](/scores/gregor-joseph-werner). Concurrently, we are working on a [catalogue](https://www.gregor-joseph-werner.at) of his works.
 
 But don't miss out our other editions, which include several highlights, such as
 

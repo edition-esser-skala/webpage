@@ -33,6 +33,20 @@ $base0f: #00f769;
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
+// description list
+.page__content dd {
+  font-size: 1em;
+}
+
+// highlight notice
+.notice--highlight {
+  margin: 2em 0 !important;  /* override*/
+  padding: 1em;
+  text-indent: initial; /* override*/
+  background-color: mix($background-color, $info-color, $notice-background-mix);
+  border-radius: $border-radius;
+  box-shadow: 0 1px 1px rgba($info-color, 0.25);
+}
 
 // navigation sidebar (left)
 .nav__sub-title {
