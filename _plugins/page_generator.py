@@ -65,6 +65,7 @@ PAGE_TEMPLATE = """\
 ---
 title: {title}
 permalink: {permalink}
+{header_image}
 sidebar:
   nav: scores
 ---
@@ -261,6 +262,13 @@ def generate_score_pages(works: dict,
         permalink = f"/scores/{slug}/"
         print("Generating page for", slug)
 
+        # header image
+        try:
+            header_image = ("header:\n  image: /assets/images/"
+                            + page_settings[slug]["header_image"])
+        except KeyError:
+            header_image = ""
+
         # composer details
         composer_details = ""
         details_file = f"_data/composers/{slug}.yml"
@@ -299,6 +307,7 @@ def generate_score_pages(works: dict,
                 PAGE_TEMPLATE.format(
                     title=title,
                     permalink=permalink,
+                    header_image=header_image,
                     composer_details=composer_details,
                     page_intro=page_intro,
                     table_rows=table_rows,

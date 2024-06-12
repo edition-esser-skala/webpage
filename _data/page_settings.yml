@@ -4,6 +4,7 @@ page_settings:
       Our editions comprise, amongst others, nine of Caldara's masses and several short liturgical works which are extant in the SLUB Dresden. These works are highly interesting, since they contain annotations and even whole movements by Jan Dismas Zelenka.
   joseph-leopold-edler-von-eybler:
     collection_repo: eybler-proprium-missae
+    header_image: header_eybler.png
     page_intro: >
       We are working on a complete edition of Eybler's sacred works, most of which are available as autograph manuscripts in the [Schottenstift Abbey Archive](https://schotten.wien/stift/stiftsarchiv/).
   johann-michael-haydn:
