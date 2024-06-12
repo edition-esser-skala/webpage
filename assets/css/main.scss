@@ -54,10 +54,11 @@ $base0f: #00f769;
 
 // composer details
 .composer-details {
-  margin: 2em 0 !important;
+  margin: 1em 0 2em 0 !important;
   padding: 1em;
   background-color: #eee;
   border-radius: 10px;
+  font-size: 0.85em;
 }
 
 // catalogue of works number in work title
@@ -70,11 +71,15 @@ table.work-table {
   font-size: .85em;
 }
 
-table.work-table a {
+table.composer-table {
+  font-size: 1em;
+}
+
+table.work-table a, table.composer-table a {
   text-decoration: none;
 }
 
-table.work-table td {
+table.work-table td, table.composer-table td {
   border: 0;
   padding: 0 .5em;
   vertical-align: top;

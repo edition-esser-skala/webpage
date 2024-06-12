@@ -79,7 +79,7 @@ INTRO_TEMPLATE = """\
 |<span class="label-col">links</span>|{links}|
 |<span class="label-col">authorities</span>|{authorities}|
 |<span class="label-col">archives</span>|{archives}|
-{{: class="work-table"}}
+{{: class="composer-table"}}
 
 {cv}
 
