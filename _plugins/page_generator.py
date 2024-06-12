@@ -365,10 +365,6 @@ def main() -> None:
                       "Technical documentation",)
     highlight_lilypond_snippets("_pages/about/technical-documentation.md")
     all_works = collect_metadata(gh_org, ignored_repos)
-    # with open("all_works.pickle", "wb") as f:
-    #     pickle.dump(all_works, f)
-    # with open("all_works.pickle", "rb") as f:
-    #     all_works = pickle.load(f)
     generate_score_pages(all_works, gh_org, "_data/page_settings.yml")
     add_cantorey(gh_org)
     print(gh.get_rate_limit().core)
