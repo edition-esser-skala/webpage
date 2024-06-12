@@ -14,7 +14,7 @@ from common_functions import (format_metadata, make_part_name)
 PAGE_TEMPLATE = """\
 ---
 title: Cantorey Performance Materials
-permalink: /projects/cantorey-performance-materials/
+permalink: /scores/cantorey-performance-materials/
 sidebar:
   nav: scores
 ---
@@ -118,7 +118,7 @@ def add_cantorey(gh_org: Organization) -> None:
                 )
             )
 
-    with open("_pages/projects/cantorey-performance-materials.md",
+    with open("_pages/scores/cantorey-performance-materials.md",
               "w",
               encoding="utf-8") as f:
         f.write(

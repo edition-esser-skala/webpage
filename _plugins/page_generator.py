@@ -58,7 +58,7 @@ scores:
 - title: ❦ Bonus
   children:
     - title: Cantorey Performance Materials
-      url: /projects/cantorey-performance-materials
+      url: /scores/cantorey-performance-materials
 """
 
 PAGE_TEMPLATE = """\
