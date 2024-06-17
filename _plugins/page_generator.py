@@ -365,6 +365,8 @@ def main() -> None:
                       "Technical documentation",)
     highlight_lilypond_snippets("_pages/about/technical-documentation.md")
     all_works = collect_metadata(gh_org, ignored_repos)
+    all_works[Composer("Gregor Joseph", "Werner")] = []
+    all_works[Composer("František Ignác Antonín", "Tůma")] = []
     generate_score_pages(all_works, gh_org, "_data/page_settings.yml")
     add_cantorey(gh_org)
     print(gh.get_rate_limit().core)
