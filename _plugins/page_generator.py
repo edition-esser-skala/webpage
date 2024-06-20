@@ -339,7 +339,7 @@ def main() -> None:
         ".github",
         "ees-template",
         "ees-tools",
-        "eybler-proprium-missae",
+        "eybler-sacred-music",
         "haydn-m-proprium-missae",
         "imslp-lists",
         "misc-analyses",
@@ -348,7 +348,7 @@ def main() -> None:
         "tuma-complete-works",
         "webpage",
         "werner-catalogue-of-works",
-        "werner-proprium-missae"
+        "werner-collected-works"
     ]
 
     gh = Github(TOKEN)

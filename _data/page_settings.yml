@@ -3,7 +3,7 @@ page_settings:
     page_intro: >
       Our editions comprise, amongst others, nine of Caldara's masses and several short liturgical works which are extant in the SLUB Dresden. These works are highly interesting, since they contain annotations and even whole movements by Jan Dismas Zelenka.
   joseph-leopold-edler-von-eybler:
-    collection_repo: eybler-proprium-missae
+    collection_repo: eybler-sacred-music
     header_image: header_eybler.png
     page_intro: >
       We are working on a complete edition of Eybler's sacred works, most of which are available as autograph manuscripts in the [Schottenstift Abbey Archive](https://schotten.wien/stift/stiftsarchiv/).
@@ -12,7 +12,7 @@ page_settings:
     page_intro: >
       Our editions include litanies, vespers, and cantatas. Moreover, the *Proprium Missæ* project represents a comprehensive collection of short liturgical works (graduals, offertories, hymns, …).
   gregor-joseph-werner:
-    collection_repo: werner-proprium-missae
+    collection_repo: werner-collected-works
     page_intro: >
       We are working on a comprehensive edition of Werner's music. WerW numbers refer to the [thematic catalogue](https://www.gregor-joseph-werner.at) which is currently under development.
   frantisek-ignac-antonin-tuma:
