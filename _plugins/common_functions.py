@@ -190,8 +190,7 @@ def format_metadata(metadata: dict, gh_org_name: str) -> dict:
             metadata["midi"] = assets[midi_file]
             del assets[midi_file]
 
-        metadata["asset_links"] = " ".join([f"[{k}]{v}"
-                                            for k, v in assets.items()])
+        metadata["asset_links"] = format_asset_list(assets)
 
     return metadata
 
@@ -249,6 +248,24 @@ def slugify(s: str) -> str:
     for k, v in SLUG_REPLACE.items():
         slug = slug.replace(k, v)
     return slug
+
+
+def format_asset_list(assets: dict) -> str:
+    """Formats a dict of assets: sort and move full score to the front.
+
+    Args:
+        assets (dict): dict with assets
+
+    Returns:
+        str: assets as included on webpage
+    """
+    asset_names = sorted(assets.keys())
+    try:
+        asset_names.remove("full score")
+        asset_names.insert(0, "full score")
+    except ValueError:
+        pass
+    return " ".join([f"[{k}]{v}" for k, v in assets.items()])
 
 
 def format_work_entry(work: dict) -> str:
@@ -483,8 +500,7 @@ def get_collection_works(repo: str,
                 )
                 for score in os.listdir(f"{repo_dir}/works/{work_dir}/scores")
             }
-            metadata["asset_links"] = " ".join([f"[{k}]{v}"
-                                                for k, v in assets.items()])
+            metadata["asset_links"] = format_asset_list(assets)
 
             metadata["midi"] = (
                 f"(https://edition.esser-skala.at/assets/pdf/{repo}/"
