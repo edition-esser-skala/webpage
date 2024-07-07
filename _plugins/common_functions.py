@@ -265,7 +265,7 @@ def format_asset_list(assets: dict) -> str:
         asset_names.insert(0, "full score")
     except ValueError:
         pass
-    return " ".join([f"[{k}]{v}" for k, v in assets.items()])
+    return " ".join([f"[{k}]{assets[k]}" for k in asset_names])
 
 
 def format_work_entry(work: dict) -> str:
