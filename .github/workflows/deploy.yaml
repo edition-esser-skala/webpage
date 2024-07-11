@@ -44,7 +44,7 @@ jobs:
         uses: jerryjvl/jekyll-build-action@v1
 
       - name: Deploy via rsync
-        uses: burnett01/rsync-deployments@6.0.0
+        uses: burnett01/rsync-deployments@7.0.1
         with:
           switches: -avzr --delete --exclude=/assets/pdf/
           path: _site/
