@@ -16,6 +16,8 @@ LICENSES = {
     "cc-by-nc-sa-4.0": "![CC BY-NC-SA 4.0](/assets/images/license_cc-by-nc-sa.svg){:width='120px'}"
 }
 
+FULL_SCORE_NAME = "full&nbsp;score"
+
 PART_REPLACE = {
     # instrument names
     "bc_realized": "bc (realizzato)",
@@ -261,8 +263,8 @@ def format_asset_list(assets: dict) -> str:
     """
     asset_names = sorted(assets.keys())
     try:
-        asset_names.remove("full score")
-        asset_names.insert(0, "full score")
+        asset_names.remove(FULL_SCORE_NAME)
+        asset_names.insert(0, FULL_SCORE_NAME)
     except ValueError:
         pass
     return " ".join([f"[{k}]{assets[k]}" for k in asset_names])
