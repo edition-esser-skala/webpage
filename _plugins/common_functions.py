@@ -504,10 +504,11 @@ def get_collection_works(repo: str,
             }
             metadata["asset_links"] = format_asset_list(assets)
 
-            metadata["midi"] = (
-                f"(https://edition.esser-skala.at/assets/pdf/{repo}/"
-                "midi_collection.zip){: .asset-link}"
-            )
+            if os.path.isdir(f"{repo_dir}/works/{work_dir}/midi"):
+                metadata["midi"] = (
+                    f"(https://edition.esser-skala.at/assets/pdf/{repo}/"
+                    f"{work_dir}/midi_collection.zip){{: .asset-link}}"
+                )
 
             metadata["latest_release"] = RELEASE_TEMPLATE.format(
                 version=last_tag.name,
