@@ -26,6 +26,8 @@ František Ignác Antonín Tůma
 Gregor Joseph Werner
 : We offer editions of Werner’s [sacred music](/scores/gregor-joseph-werner). Concurrently, we are working on a [catalogue](https://www.gregor-joseph-werner.at) of his works.
 
+{% raw %}![Focus]({{ site.url }}{{ site.baseurl }}/assets/images/focus.png){% endraw %}
+
 But don't miss out our other editions, which include several highlights, such as
 
 - the *Missa Providentiæ* by Antonio [Caldara](/scores/antonio-caldara), which includes a *Credo* by Jan Dismas Zelenka (ZWV 31)
