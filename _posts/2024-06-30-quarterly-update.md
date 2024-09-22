@@ -9,7 +9,7 @@ In order to sharpen the edition's profile, we have formulated four key areas of 
 
 1. **Johann Michael Haydn**. We will continue our work on the *Proprium Missæ* project and plan to edit all known litanies.
 2. **Joseph Leopold Eybler: Sacred music**. We are working on a complete edition of Eybler’s sacral music, including his masses and short liturgical works.
-3. **František Ignác Antonín Tůma: Complete works**. We are working on a complete edition of Tůma’s compositions and on a [catalogue of his works](https://www.frantisek-tuma.at/). To this end, all available editions of Tůma's works have been revised and assigned catalogue of works numbers.
+3. **František Ignác Antonín Tůma: Collected works**. We are working on a collected edition of Tůma’s compositions and on a [catalogue of his works](https://www.frantisek-tuma.at/). To this end, all available editions of Tůma's works have been revised and assigned catalogue of works numbers.
 4. **Gregor Joseph Werner: Collected works**. Concurrently, we are working on a [catalogue of Werner's works](https://www.gregor-joseph-werner.at/), and a comprehensive edition of his works (which will hopefully evolve into a complete edition some day).
 
 Notably, we do not list projects separately on the edition's website anymore, since they have been combined with editions of other works by the respective composer.

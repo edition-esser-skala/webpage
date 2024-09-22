@@ -345,7 +345,7 @@ def main() -> None:
         "misc-analyses",
         "sacral-lyrics",
         "tuma-catalogue-of-works",
-        "tuma-complete-works",
+        "tuma-collected-works",
         "webpage",
         "werner-catalogue-of-works",
         "werner-collected-works"

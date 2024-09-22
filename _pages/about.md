@@ -21,7 +21,7 @@ Joseph Leopold Eybler
 : We are working on a [complete edition](/scores/joseph-leopold-edler-von-eybler) of Eybler's sacral music, including his masses and short liturgical works.
 
 František Ignác Antonín Tůma
-: We are working on a [complete edition](/scores/frantisek-ignac-antonin-tuma) of Tůma’s compositions, as well as on a [catalogue](http://tumw.esser-skala.at) of his works.
+: We are working on a [collected edition](/scores/frantisek-ignac-antonin-tuma) of Tůma’s compositions, as well as on a [catalogue](http://tumw.esser-skala.at) of his works.
 
 Gregor Joseph Werner
 : We offer editions of Werner’s [sacred music](/scores/gregor-joseph-werner). Concurrently, we are working on a [catalogue](https://www.gregor-joseph-werner.at) of his works.
