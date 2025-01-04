@@ -52,7 +52,7 @@ excerpt: Eybler · Tůma · Werner · Performances
   - [Vesperæ de Beata](/scores/gregor-joseph-werner/#work-werw-h-1-16) WerW H.1.16
 - Marian hymns
   - [Alma Redemptoris mater](/scores/gregor-joseph-werner/#work-werw-i-1-4) WerW I.1.4
-  - [Ave Regina cœlorum](/scores/gregor-joseph-werner/#work-werw-i-2-7) WerW I.2.7
+  - [Ave Regina cœlorum](/scores/gregor-joseph-werner/#work-werw-i-2-17) WerW I.2.17
   - [Regina cœli](/scores/gregor-joseph-werner/#work-werw-i-3-1) WerW I.3.1
   - [Regina cœli](/scores/gregor-joseph-werner/#work-werw-i-3-22) WerW I.3.22
   - [Salve Regina](/scores/gregor-joseph-werner/#work-werw-i-4-50) WerW I.4.50
