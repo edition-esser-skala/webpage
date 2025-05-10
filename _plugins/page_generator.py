@@ -76,6 +76,8 @@ sidebar:
 
 {page_intro}
 
+{preface}
+
 |ID|Title|Genre|
 |--|-----|-----|
 {table_rows}
@@ -282,6 +284,17 @@ def generate_score_pages(works: dict,
         except KeyError:
             page_intro = ""
 
+        # preface
+        try:
+            repo = page_settings[slug]["collection_repo"]
+            preface_file = page_settings[slug]["preface"]
+            preface = (
+                f"[General preface](https://edition.esser-skala.at/assets/pdf/"
+                f"{repo}/{preface_file})"
+            )
+        except KeyError:
+            preface = ""
+
         # works from individual repos
         table_rows_repos, work_details_repos = get_work_list(
             sorted(works[composer], key=itemgetter("title")),
@@ -310,6 +323,7 @@ def generate_score_pages(works: dict,
                     header_image=header_image,
                     composer_details=composer_details,
                     page_intro=page_intro,
+                    preface=preface,
                     table_rows=table_rows,
                     work_details=work_details
                 )
