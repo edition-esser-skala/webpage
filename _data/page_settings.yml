@@ -10,15 +10,18 @@ page_settings:
     preface: general_preface.pdf
   johann-michael-haydn:
     collection_repo: haydn-m-proprium-missae
+    header_image: header_haydn.png
     page_intro: >
       Our editions include litanies, vespers, and cantatas. Moreover, the *Proprium Missæ* project represents a comprehensive collection of short liturgical works (graduals, offertories, hymns, …).
   gregor-joseph-werner:
     collection_repo: werner-collected-works
+    header_image: header_werner.png
     page_intro: >
       We are working on a comprehensive edition of Werner's music. WerW numbers refer to the [thematic catalogue](https://www.gregor-joseph-werner.at) which is currently under development.
     preface: general_preface.pdf
   frantisek-ignac-antonin-tuma:
     collection_repo: tuma-collected-works
+    header_image: header_tuma.png
     page_intro: >
       We are working on a comprehensive edition of Tůma's music. TumW numbers refer to the [thematic catalogue](https://www.frantisek-tuma.at) which is currently under development.
     preface: general_preface.pdf
