@@ -13,6 +13,7 @@ page_settings:
     header_image: header_haydn.png
     page_intro: >
       Our editions include litanies, vespers, and cantatas. Moreover, the *Proprium Missæ* project represents a comprehensive collection of short liturgical works (graduals, offertories, hymns, …).
+    preface: general_preface.pdf
   gregor-joseph-werner:
     collection_repo: werner-collected-works
     header_image: header_werner.png
