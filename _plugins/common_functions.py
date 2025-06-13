@@ -29,6 +29,7 @@ PART_REPLACE = {
     "obdc": "ob da caccia",
     "org_realized": "org (realizzato)",
     "pf_red": "pf (riduzione)",
+    "vlada": "vla d'amore",
 
     # instrument numbers
     r"([\w\)])123$": r"\1 1, 2, 3",
