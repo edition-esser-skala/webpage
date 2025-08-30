@@ -368,7 +368,7 @@ def main() -> None:
     gh = Github(TOKEN)
     gh_org = gh.get_organization("edition-esser-skala")
 
-    print(gh.get_rate_limit().core)
+    print(gh.get_rate_limit().resources.core)
     get_markdown_file(gh_org,
                       "documents/editorial_guidelines.md",
                       "editorial-guidelines.md",
@@ -383,7 +383,7 @@ def main() -> None:
     all_works[Composer("František Ignác Antonín", "Tůma")] = []
     generate_score_pages(all_works, gh_org, "_data/page_settings.yml")
     add_cantorey(gh_org)
-    print(gh.get_rate_limit().core)
+    print(gh.get_rate_limit().resources.core)
 
 
 if __name__ == "__main__":
