@@ -1,5 +1,5 @@
 ---
-title: Quarterly update Q1/2025
+title: Quarterly update Q2/2025
 excerpt: Eybler · Haydn M · Tůma · Werner · Performances
 ---
 
