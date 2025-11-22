@@ -100,5 +100,5 @@ excerpt: Eybler · Haydn M · Tůma · Werner · Performances
 
 ### Performances
 
-- The Coro dos Amigos do Conservatório Nacional (conductor: Luís Lopes Cardoso) have performed Michael Haydn's [Responsoria in Coena Domini](/scores/johann-michael-haydn/#work-mh-276) MH 276 in Lisboa (2025-04-11, 12, and 13).
+- The Coro dos Amigos do Conservatório Nacional (conductor: Luís Lopes Cardoso) have performed Michael Haydn's [Responsoria in Coena Domini](/scores/johann-michael-haydn/#work-mh-276) MH 276 as well as the [Introitus, Graduale, Offertorium et Communio ad Missam in Cœna Domini](/scores/johann-michael-haydn/#work-mh-628) MH 628 in Lisboa (2025-04-11, 12, and 13).
 - The Cantorey der Kirche der Barmherzigen Brüder Schärding have performed Werner's [Missa Trinitas in unitate veneranda](/scores/gregor-joseph-werner/#work-werw-b-1) WerW B.1 and Haydn's [Tantum ergo](/scores/johann-michael-haydn/#work-mh-460) MH 460 on the Feast of Corpus Christi (2025-06-19). This church service has also been [broadcast by the ORF](https://on.orf.at/video/14280518/katholischer-gottesdienst-zu-fronleichman-aus-dem-kurhaus-schaerding) (Austria's national public broadcaster).
